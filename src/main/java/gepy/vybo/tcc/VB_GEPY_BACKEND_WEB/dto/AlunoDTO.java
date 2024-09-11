@@ -17,7 +17,7 @@ public class AlunoDTO {
 
     // Identificação
     private String nomeCompleto;
-    private Date dataNascimento;
+    private String dataNascimento;
     private String cidadeNascimento;
     private String ufNascimento;
     private String nacionalidade;
@@ -26,7 +26,7 @@ public class AlunoDTO {
     private String necessidades;
 
     // Endereço
-    private int cep;
+    private String cep;
     private String endereco;
     private int numeroEndereco;
     private String complemento;

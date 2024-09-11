@@ -27,7 +27,7 @@ public class AlunoEntity {
     private String nomeCompleto;
 
     @Column(nullable = false)
-    private Date dataNascimento;
+    private String dataNascimento;
 
     @Column(nullable = false)
     private String cidadeNascimento;
@@ -49,7 +49,7 @@ public class AlunoEntity {
 
     // Endereço
     @Column(nullable = false)
-    private int cep;
+    private String cep;
 
     @Column(nullable = false)
     private String endereco;
@@ -85,8 +85,6 @@ public class AlunoEntity {
     @Column(nullable = false)
     private String telefoneAluno;
 
-    private String emailAluno;
-
     // Contato Responsáveis
     @Column(nullable = false)
     private String nomeResponsavel;
@@ -99,9 +97,6 @@ public class AlunoEntity {
 
     @Column(nullable = false)
     private String telefoneResponsavel;
-
-    @Column(nullable = false)
-    private String emailResponsavel;
 
     public AlunoEntity(AlunoDTO aluno) {
         BeanUtils.copyProperties(aluno, this);

@@ -1,8 +1,11 @@
 package gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.dto;
 
+import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.entity.AlunoEntity;
+import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.entity.FuncionarioEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.beans.BeanUtils;
 
 @Getter
 @Setter
@@ -37,4 +40,8 @@ public class FuncionarioDTO {
     private String cpf;
     private String dataEmissao;
     private String orgaoExpedidor;
+
+    public FuncionarioDTO(FuncionarioEntity funcionario) {
+        BeanUtils.copyProperties(funcionario, this);
+    }
 }

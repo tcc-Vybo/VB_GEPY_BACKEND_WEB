@@ -1,6 +1,7 @@
 package gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.entity;
 
 import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.dto.AlunoDTO;
+import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.dto.FuncionarioDTO;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -8,21 +9,19 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.beans.BeanUtils;
 
-import java.util.Date;
-
 @Entity
-@Table (name = "aluno")
+@Table(name = "funcionario")
 @Getter
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class AlunoEntity {
+public class FuncionarioEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private  Long id;
+    private Long id;
 
-    // Identificação
+    // Dados Pessoais
     @Column(nullable = false)
     private String nomeCompleto;
 
@@ -30,24 +29,25 @@ public class AlunoEntity {
     private String dataNascimento;
 
     @Column(nullable = false)
-    private String cidadeNascimento;
-
-    @Column(nullable = false)
-    private String ufNascimento;
-
-    @Column(nullable = false)
-    private String nacionalidade;
-
-    @Column(nullable = false)
     private String genero;
 
     @Column(nullable = false)
-    private String corRaca;
+    private String telefone;
 
     @Column(nullable = false)
-    private String necessidades;
+    private String email;
 
-    // Endereço
+    // Dados Profissionais
+    @Column(nullable = false)
+    private String cargo;
+
+    @Column(nullable = false)
+    private String departamento;
+
+    @Column(nullable = false)
+    private String dataAdmissao;
+
+    // Endereço Residencial
     @Column(nullable = false)
     private String cep;
 
@@ -55,15 +55,16 @@ public class AlunoEntity {
     private String endereco;
 
     @Column(nullable = false)
-    private int numeroEndereco;
+    private String numero;
 
+    @Column(nullable = false)
     private String complemento;
 
     @Column(nullable = false)
     private String bairro;
 
     @Column(nullable = false)
-    private String municipio;
+    private String cidade;
 
     @Column(nullable = false)
     private String uf;
@@ -81,24 +82,7 @@ public class AlunoEntity {
     @Column(nullable = false)
     private String orgaoExpedidor;
 
-    // Contato Aluno
-    @Column(nullable = false)
-    private String telefoneAluno;
-
-    // Contato Responsáveis
-    @Column(nullable = false)
-    private String nomeResponsavel;
-
-    @Column(nullable = false)
-    private String cpfResponsavel;
-
-    @Column(nullable = false)
-    private String relacao;
-
-    @Column(nullable = false)
-    private String telefoneResponsavel;
-
-    public AlunoEntity(AlunoDTO aluno) {
-        BeanUtils.copyProperties(aluno, this);
+    public FuncionarioEntity(FuncionarioDTO funcionario) {
+        BeanUtils.copyProperties(funcionario, this);
     }
 }

@@ -1,37 +1,38 @@
 package gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.dto;
 
 import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.entity.AlunoEntity;
+import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.entity.FuncionarioEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.beans.BeanUtils;
 
-import java.util.Date;
-
 @Getter
 @Setter
 @NoArgsConstructor
-public class AlunoDTO {
+public class FuncionarioDTO {
 
     private Long id;
 
-    // Identificação
+    // Dados Pessoais
     private String nomeCompleto;
     private String dataNascimento;
-    private String cidadeNascimento;
-    private String ufNascimento;
-    private String nacionalidade;
     private String genero;
-    private String corRaca;
-    private String necessidades;
+    private String telefone;
+    private String email;
 
-    // Endereço
+    // Dados Profissionais
+    private String cargo;
+    private String departamento;
+    private String dataAdmissao;
+
+    // Endereço Residencial
     private String cep;
     private String endereco;
-    private int numeroEndereco;
+    private String numero;
     private String complemento;
     private String bairro;
-    private String municipio;
+    private String cidade;
     private String uf;
 
     // RG
@@ -40,16 +41,7 @@ public class AlunoDTO {
     private String dataEmissao;
     private String orgaoExpedidor;
 
-    // Contato Aluno
-    private String telefoneAluno;
-
-    // Contato Responsáveis
-    private String nomeResponsavel;
-    private String cpfResponsavel;
-    private String relacao;
-    private String telefoneResponsavel;
-
-    public AlunoDTO(AlunoEntity aluno) {
-        BeanUtils.copyProperties(aluno, this);
+    public FuncionarioDTO(FuncionarioEntity funcionario) {
+        BeanUtils.copyProperties(funcionario, this);
     }
 }

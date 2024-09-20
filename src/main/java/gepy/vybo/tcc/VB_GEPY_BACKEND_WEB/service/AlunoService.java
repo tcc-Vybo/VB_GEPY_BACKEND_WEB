@@ -17,7 +17,7 @@ public class AlunoService {
     private AlunoRepository alunoRepository;
 
     public List<AlunoDTO> buscarPorNome(String nomeCompleto) {
-        List<AlunoEntity> alunos = alunoRepository.findByNomeContainingIgnoreCase(nomeCompleto);
+        List<AlunoEntity> alunos = alunoRepository.findByNomeCompletoContainingIgnoreCase(nomeCompleto);
 
         // Converter entidades para DTOs
         return alunos.stream().map(AlunoDTO::new)

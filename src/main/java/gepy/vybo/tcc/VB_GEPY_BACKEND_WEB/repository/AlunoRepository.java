@@ -9,5 +9,5 @@ import java.util.List;
 
 public interface AlunoRepository extends JpaRepository<AlunoEntity, Long> {
 
-    List<AlunoEntity> findByNomeContainingIgnoreCase(String nomeCompleto);
+    List<AlunoEntity> findByNomeCompletoContainingIgnoreCase(String nomeCompleto);
 }

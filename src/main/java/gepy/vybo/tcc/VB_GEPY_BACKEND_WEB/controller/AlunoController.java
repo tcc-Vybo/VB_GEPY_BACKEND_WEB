@@ -21,8 +21,8 @@ public class AlunoController {
         return alunoService.ListarTodos();
     }
 
-    @GetMapping("/buscar")
-    public ResponseEntity<List<AlunoDTO>> buscarPorNome(@RequestParam String nomeCompleto) {
+    @GetMapping("/buscar/{nomeCompleto}")
+    public ResponseEntity<List<AlunoDTO>> buscarPorNome(@PathVariable String nomeCompleto) {
         List<AlunoDTO> alunos = alunoService.buscarPorNome(nomeCompleto);
         return ResponseEntity.ok(alunos);
     }

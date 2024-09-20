@@ -9,5 +9,6 @@ import java.util.List;
 
 public interface AlunoRepository extends JpaRepository<AlunoEntity, Long> {
 
-    List<AlunoEntity> findByNomeCompletoContainingIgnoreCase(String nomeCompleto);
+    @Query(value = "SELECT * FROM aluno WHERE nome_completo = ?", nativeQuery = true)
+    List<AlunoEntity> findAlunoByName(String nomeCompleto);
 }

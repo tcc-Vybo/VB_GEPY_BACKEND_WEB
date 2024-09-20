@@ -14,7 +14,7 @@ public class AlunoService {
     @Autowired
     private AlunoRepository alunoRepository;
 
-    public List<AlunoDTO> buscarAlunoPorNome(String nomeCompleto){
+    public AlunoDTO buscarAlunoPorNome(String nomeCompleto){
         return alunoRepository.findAlunoByName(nomeCompleto);
     }
 

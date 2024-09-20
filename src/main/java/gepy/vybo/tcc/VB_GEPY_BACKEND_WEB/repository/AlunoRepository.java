@@ -9,6 +9,6 @@ import java.util.List;
 
 public interface AlunoRepository extends JpaRepository<AlunoEntity, Long> {
 
-    @Query(value = "SELECT * FROM aluno WHERE nomeCompleto = ?", nativeQuery = true)
+    @Query(value = "SELECT * FROM aluno WHERE nome_completo = ?", nativeQuery = true)
     AlunoDTO findAlunoByName(String nomeCompleto);
 }

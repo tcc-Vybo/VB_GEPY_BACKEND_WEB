@@ -22,7 +22,7 @@ public class AlunoController {
     }
 
     @GetMapping("/buscar/{nomeCompleto}")
-    public AlunoDTO buscarAlunoPorNome(@RequestParam String nomeCompleto){
+    public AlunoDTO buscarAlunoPorNome(@RequestParam("nomeCompleto") String nomeCompleto){
         return alunoService.buscarAlunoPorNome(nomeCompleto);
     }
 

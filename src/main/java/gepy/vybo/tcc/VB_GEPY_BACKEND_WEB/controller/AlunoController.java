@@ -21,9 +21,10 @@ public class AlunoController {
         return alunoService.ListarTodos();
     }
 
-    @GetMapping("/buscar/{nomeCompleto}")
-    public AlunoDTO buscarAlunoPorNome(@PathVariable("nomeCompleto") String nomeCompleto){
-        return alunoService.buscarAlunoPorNome(nomeCompleto);
+    @GetMapping("/buscar")
+    public ResponseEntity<List<AlunoDTO>> buscarPorNome(@RequestParam String nomeCompleto) {
+        List<AlunoDTO> alunos = alunoService.buscarPorNome(nomeCompleto);
+        return ResponseEntity.ok(alunos);
     }
 
     @PostMapping

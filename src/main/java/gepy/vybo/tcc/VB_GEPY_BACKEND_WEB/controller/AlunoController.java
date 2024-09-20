@@ -21,6 +21,11 @@ public class AlunoController {
         return alunoService.ListarTodos();
     }
 
+    @GetMapping("/buscar/{nomeCompleto}")
+    public List<AlunoDTO> buscarAlunoPorNome(@RequestParam String nomeCompleto){
+        return alunoService.buscarAlunoPorNome(nomeCompleto);
+    }
+
     @PostMapping
     public void inserir(@RequestBody AlunoDTO aluno){
         alunoService.inserir(aluno);

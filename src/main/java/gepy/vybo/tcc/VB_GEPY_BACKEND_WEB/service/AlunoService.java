@@ -40,13 +40,13 @@ public class AlunoService {
         return new AlunoDTO(alunoRepository.save(alunoEntity));
     }
 
-        public void excluir (Long id){
-            AlunoEntity aluno = alunoRepository.findById(id).get();
-            alunoRepository.delete(aluno);
-        }
+    public void excluir (Long id){
+        AlunoEntity aluno = alunoRepository.findById(id).get();
+        alunoRepository.delete(aluno);
+    }
 
 
-        public AlunoDTO buscarPorId(Long id){
+    public AlunoDTO buscarPorId(Long id){
         return new AlunoDTO(alunoRepository.findById(id).get());
         }
 

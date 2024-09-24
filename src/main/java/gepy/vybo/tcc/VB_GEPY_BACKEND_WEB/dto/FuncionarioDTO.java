@@ -29,7 +29,7 @@ public class FuncionarioDTO {
     // Endereço Residencial
     private String cep;
     private String endereco;
-    private String numero;
+    private int numero;
     private String complemento;
     private String bairro;
     private String cidade;

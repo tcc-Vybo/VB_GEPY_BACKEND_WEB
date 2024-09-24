@@ -98,6 +98,9 @@ public class AlunoEntity {
     @Column(nullable = false)
     private String telefoneResponsavel;
 
+    @Column(nullable = false)
+    private String emailResponsavel;
+
     public AlunoEntity(AlunoDTO aluno) {
         BeanUtils.copyProperties(aluno, this);
     }

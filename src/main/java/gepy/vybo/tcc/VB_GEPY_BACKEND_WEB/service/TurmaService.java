@@ -4,9 +4,11 @@ import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.dto.TurmaDTO;
 import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.entity.TurmaEntity;
 import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.repository.TurmaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class TurmaService {
@@ -17,6 +19,11 @@ public class TurmaService {
     public List<TurmaDTO> listarTodos(){
         List<TurmaEntity> turma = turmaRepository.findAll();
         return turma.stream().map(TurmaDTO::new).toList();
+    }
+
+    public List<TurmaDTO> buscarPorNome(String nome){
+        List<TurmaEntity> turmas = turmaRepository.findTurmaByName(nome);
+        return turmas.stream().map(TurmaDTO::new).collect(Collectors.toList());
     }
 
     public void inserir(TurmaDTO turma){

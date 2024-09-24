@@ -21,6 +21,12 @@ public class TurmaController {
         return turmaService.listarTodos();
     }
 
+    @GetMapping("/buscar/{nome}")
+    public ResponseEntity<List<TurmaDTO>> buscarPorNome(@PathVariable String nome){
+        List<TurmaDTO> turmas = turmaService.buscarPorNome(nome);
+        return ResponseEntity.ok(turmas);
+    }
+
     @PostMapping
     public void inserir(@RequestBody TurmaDTO turma){
         turmaService.inserir(turma);

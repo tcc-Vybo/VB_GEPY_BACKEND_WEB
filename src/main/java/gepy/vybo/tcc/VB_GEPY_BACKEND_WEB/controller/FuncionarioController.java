@@ -17,8 +17,14 @@ public class FuncionarioController {
     private FuncionarioService funcionarioService;
 
     @GetMapping
-    public  List<FuncionarioDTO> ListarTodos(){
+    public List<FuncionarioDTO> ListarTodos(){
         return funcionarioService.ListarTodos();
+    }
+
+    @GetMapping("/buscar/{nomeCompleto}")
+    public ResponseEntity<List<FuncionarioDTO>> buscarPorNome(@PathVariable String nomeCompleto){
+        List<FuncionarioDTO> funcionarios = funcionarioService.buscarPorNome(nomeCompleto);
+        return ResponseEntity.ok(funcionarios);
     }
 
     @PostMapping

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class FuncionarioService {
@@ -17,6 +18,12 @@ public class FuncionarioService {
     public List<FuncionarioDTO> ListarTodos(){
         List<FuncionarioEntity> funcionarios = funcionarioRepository.findAll();
         return funcionarios.stream().map(FuncionarioDTO::new).toList();
+    }
+
+    public List<FuncionarioDTO> buscarPorNome(String nomeCompleto) {
+        List<FuncionarioEntity> funcionarios = funcionarioRepository.findFuncionarioByName(nomeCompleto);
+        return funcionarios.stream().map(FuncionarioDTO::new)
+                .collect(Collectors.toList());
     }
 
     public void inserir(FuncionarioDTO funcionario){

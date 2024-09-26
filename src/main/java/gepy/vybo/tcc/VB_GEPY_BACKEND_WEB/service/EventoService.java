@@ -5,10 +5,7 @@ import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.entity.EventoEntity;
 import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.repository.EventoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -37,7 +34,7 @@ public class EventoService {
     }
 
     @DeleteMapping("/{id}")
-    public void excluir(Long id){
+    public void excluir(@PathVariable("id") Long id){
         EventoEntity eventoEntity = eventoRepository.findById(id).get();
         eventoRepository.delete(eventoEntity);
     }

@@ -25,9 +25,11 @@ public class TurmaEntity {
     private String nome;
 
     @ManyToOne
+    @JoinColumn(name = "id_professor")
     private FuncionarioEntity professor;
 
     @ManyToOne
+    @JoinColumn(name = "id_aluno")
     private AlunoEntity aluno;
 
     public TurmaEntity(TurmaDTO turma) {

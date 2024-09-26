@@ -33,9 +33,11 @@ public class EventoEntity {
     private String hora;
 
     @OneToOne
+    @JoinColumn(name = "id_funcionario")
     private FuncionarioEntity remetente;
 
     @ManyToOne
+    @JoinColumn(name = "id_turma")
     private TurmaEntity destinatario;
 
     public EventoEntity(EventoDTO evento){

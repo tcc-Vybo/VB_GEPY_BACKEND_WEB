@@ -55,9 +55,8 @@ public class FuncionarioEntity {
     private String endereco;
 
     @Column(nullable = false)
-    private String numero;
+    private int numero;
 
-    @Column(nullable = false)
     private String complemento;
 
     @Column(nullable = false)

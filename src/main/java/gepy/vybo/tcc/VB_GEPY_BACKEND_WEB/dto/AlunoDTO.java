@@ -41,6 +41,7 @@ public class AlunoDTO {
     private String orgaoExpedidor;
 
     // Contato Aluno
+    private String emailAluno;
     private String telefoneAluno;
 
     // Contato Responsáveis
@@ -48,6 +49,7 @@ public class AlunoDTO {
     private String cpfResponsavel;
     private String relacao;
     private String telefoneResponsavel;
+    private String emailResponsavel;
 
     public AlunoDTO(AlunoEntity aluno) {
         BeanUtils.copyProperties(aluno, this);

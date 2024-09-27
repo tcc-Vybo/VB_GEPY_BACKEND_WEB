@@ -22,12 +22,12 @@ public class EventoController {
     }
 
     @PostMapping
-    public void inserir(EventoDTO evento){
+    public void inserir(@RequestBody EventoDTO evento){
         eventoService.inserir(evento);
     }
 
     @PutMapping
-    public EventoDTO alterar(EventoDTO evento){
+    public EventoDTO alterar(@RequestBody EventoDTO evento){
         return eventoService.alterar(evento);
     }
 

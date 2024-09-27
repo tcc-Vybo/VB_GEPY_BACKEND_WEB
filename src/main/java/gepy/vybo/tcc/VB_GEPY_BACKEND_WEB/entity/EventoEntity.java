@@ -33,14 +33,20 @@ public class EventoEntity {
     private String hora;
 
     @OneToOne
-    @JoinColumn(name = "id_funcionario")
+    @JoinColumn(name = "id_funcionario", nullable = false)
     private FuncionarioEntity remetente;
 
     @ManyToOne
-    @JoinColumn(name = "id_turma")
+    @JoinColumn(name = "id_turma", nullable = false)
     private TurmaEntity destinatario;
 
     public EventoEntity(EventoDTO evento){
         BeanUtils.copyProperties(evento, this);
+        if(evento != null && evento.getRemetente() != null){
+            this.remetente = new FuncionarioEntity(evento.getRemetente());
+        }
+        if(evento != null && evento.getDestinatario() != null){
+            this.destinatario = new TurmaEntity(evento.getDestinatario());
+        }
     }
 }

@@ -1,6 +1,5 @@
 package gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.entity;
 
-import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.dto.FuncionarioDTO;
 import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.dto.TurmaDTO;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
@@ -24,12 +23,15 @@ public class TurmaEntity {
     @Column(nullable = false)
     private String nome;
 
+    @Column(nullable = false)
+    private String materia;
+
     @ManyToOne
-    @JoinColumn(name = "id_professor")
+    @JoinColumn(name = "id_professor", nullable = false)
     private FuncionarioEntity professor;
 
     @ManyToOne
-    @JoinColumn(name = "id_aluno")
+    @JoinColumn(name = "id_aluno", nullable = false)
     private AlunoEntity aluno;
 
     public TurmaEntity(TurmaDTO turma) {

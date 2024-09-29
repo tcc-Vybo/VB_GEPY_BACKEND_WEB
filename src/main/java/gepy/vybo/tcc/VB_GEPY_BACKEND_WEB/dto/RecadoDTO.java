@@ -11,13 +11,19 @@ import org.springframework.beans.BeanUtils;
 @NoArgsConstructor
 public class RecadoDTO {
     private Long id;
-    private String rementente;
-    private String destinatario;
+    private FuncionarioDTO remetente;
+    private AlunoDTO destinatario;
     private String texto;
     private String dataAtual;
     private String horarioAtual;
 
     public RecadoDTO(RecadoEntity recado) {
         BeanUtils.copyProperties(recado, this);
+        if(recado != null && recado.getRemetente() != null){
+            this.remetente = new FuncionarioDTO(recado.getRemetente());
+        }
+        if(recado != null && recado.getDestinatario() != null){
+            this.destinatario = new AlunoDTO(recado.getDestinatario());
+        }
     }
 }

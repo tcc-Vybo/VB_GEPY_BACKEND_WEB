@@ -20,11 +20,13 @@ public class RecadoEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(nullable = false)
-    private String rementente;
+    @OneToOne
+    @JoinColumn(name = "id_funcionario", nullable = false)
+    private FuncionarioEntity remetente;
 
-    @Column(nullable = false)
-    private String destinatario;
+    @OneToOne
+    @JoinColumn(name = "id_aluno",nullable = false)
+    private AlunoEntity destinatario;
 
     @Column(nullable = false)
     private String texto;
@@ -37,5 +39,11 @@ public class RecadoEntity {
 
     public RecadoEntity(RecadoDTO recado){
         BeanUtils.copyProperties(recado, this);
+        if(recado != null && recado.getRemetente() != null){
+            this.remetente = new FuncionarioEntity(recado.getRemetente());
+        }
+        if(recado != null && recado.getDestinatario() != null){
+            this.destinatario = new AlunoEntity(recado.getDestinatario());
+        }
     }
 }

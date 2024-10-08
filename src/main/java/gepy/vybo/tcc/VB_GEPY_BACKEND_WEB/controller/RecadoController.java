@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/recado")
@@ -22,8 +23,8 @@ public class RecadoController {
     }
 
     @PostMapping
-    public void inserir(@RequestBody RecadoDTO recado){
-        recadoService.inserir(recado);
+    public ResponseEntity<Map<String, String>> inserir(@RequestBody RecadoDTO recado){
+       return recadoService.inserir(recado);
     }
 
     @PutMapping

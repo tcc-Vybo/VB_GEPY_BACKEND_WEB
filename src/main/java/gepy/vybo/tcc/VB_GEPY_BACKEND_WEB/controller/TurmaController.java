@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/turma")
@@ -28,18 +29,17 @@ public class TurmaController {
     }
 
     @PostMapping
-    public void inserir(@RequestBody TurmaDTO turma){
-        turmaService.inserir(turma);
+    public ResponseEntity<Map<String, String>> inserir(@RequestBody TurmaDTO turma){
+        return turmaService.inserir(turma);
     }
 
     @PutMapping
-    public TurmaDTO alterar(@RequestBody TurmaDTO turma){
+    public ResponseEntity<Map<String, String>> alterar(@RequestBody TurmaDTO turma){
         return turmaService.alterar(turma);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> remover(@PathVariable("id") Long id){
-        turmaService.excluir(id);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<Map<String, String>> remover(@PathVariable("id") Long id){
+        return turmaService.excluir(id);
     }
 }

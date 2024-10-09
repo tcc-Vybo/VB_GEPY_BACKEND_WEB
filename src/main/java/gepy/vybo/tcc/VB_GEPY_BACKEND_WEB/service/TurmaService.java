@@ -4,10 +4,13 @@ import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.dto.TurmaDTO;
 import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.entity.TurmaEntity;
 import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.repository.TurmaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -26,18 +29,42 @@ public class TurmaService {
         return turmas.stream().map(TurmaDTO::new).collect(Collectors.toList());
     }
 
-    public void inserir(TurmaDTO turma){
+    public ResponseEntity<Map<String, String>> inserir(TurmaDTO turma){
         TurmaEntity turmaEntity = new TurmaEntity(turma);
-        turmaRepository.save(turmaEntity);
+        Map<String, String> response = new HashMap<>();
+        try {
+            turmaRepository.save(turmaEntity);
+            response.put("message", "Turma cadastrada com sucesso!!");
+            return ResponseEntity.ok(response);
+        }catch (Exception e){
+            response.put("error", "Erro ao cadastrar turma!!");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        }
     }
 
-    public TurmaDTO alterar(TurmaDTO turma){
+    public ResponseEntity<Map<String, String>> alterar(TurmaDTO turma){
         TurmaEntity turmaEntity = new TurmaEntity(turma);
-        return new TurmaDTO(turmaRepository.save(turmaEntity));
+        Map<String, String> response = new HashMap<>();
+        try{
+            turmaRepository.save(turmaEntity);
+            response.put("message", "Turma alterada com sucesso!!");
+            return ResponseEntity.ok(response);
+        }catch (Exception e){
+            response.put("error", "Erro ao alterar turma!!");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        }
     }
 
-    public void excluir(Long id){
+    public ResponseEntity<Map<String, String>> excluir(Long id){
         TurmaEntity turma = turmaRepository.findById(id).get();
-        turmaRepository.delete(turma);
+        Map<String, String> response = new HashMap<>();
+        try {
+            turmaRepository.delete(turma);
+            response.put("message", "Turma removida com sucesso!!");
+            return ResponseEntity.ok(response);
+        }catch (Exception e){
+            response.put("error", "Erro ao remover turma!!");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        }
     }
 }

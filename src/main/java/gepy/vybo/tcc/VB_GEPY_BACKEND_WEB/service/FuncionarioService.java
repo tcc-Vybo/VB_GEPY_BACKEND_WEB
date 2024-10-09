@@ -4,9 +4,12 @@ import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.dto.FuncionarioDTO;
 import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.entity.FuncionarioEntity;
 import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.repository.FuncionarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -26,23 +29,43 @@ public class FuncionarioService {
                 .collect(Collectors.toList());
     }
 
-    public void inserir(FuncionarioDTO funcionario){
+    public ResponseEntity<Map<String, String>> inserir(FuncionarioDTO funcionario){
         FuncionarioEntity funcionarioEntity = new FuncionarioEntity(funcionario);
-        funcionarioRepository.save(funcionarioEntity);
+        Map<String, String> response = new HashMap<>();
+        try{
+            funcionarioRepository.save(funcionarioEntity);
+            response.put("message", "Funcionário cadastado com sucesso!!");
+            return ResponseEntity.ok(response);
+        }catch(Exception e){
+            response.put("error", "Erro ao cadastrar funcionário!!");
+            return ResponseEntity.ok(response);
+        }
     }
 
-    public FuncionarioDTO alterar(FuncionarioDTO funcionario){
+    public ResponseEntity<Map<String, String>> alterar(FuncionarioDTO funcionario){
         FuncionarioEntity funcionarioEntity = new FuncionarioEntity(funcionario);
-        return new FuncionarioDTO(funcionarioRepository.save(funcionarioEntity));
+        Map<String, String> response = new HashMap<>();
+        try{
+            funcionarioRepository.save(funcionarioEntity);
+            response.put("message", "Funcionário alterado com sucesso!!");
+            return ResponseEntity.ok(response);
+        }catch(Exception e){
+            response.put("error", "Erro ao alterar funcionário!!");
+            return ResponseEntity.ok(response);
+        }
     }
 
-    public void excluir(Long id){
+    public ResponseEntity<Map<String, String>> excluir(Long id){
         FuncionarioEntity funcionario= funcionarioRepository.findById(id).get();
-        funcionarioRepository.delete(funcionario);
-    }
-
-    public FuncionarioDTO buscarPorId(Long id){
-        return new FuncionarioDTO((funcionarioRepository.findById(id).get()));
+        Map<String, String> response = new HashMap<>();
+        try {
+            funcionarioRepository.delete(funcionario);
+            response.put("message", "Funcionário deletado com sucesso!!");
+            return ResponseEntity.ok(response);
+        }catch (Exception e){
+            response.put("error", "Erro ao deletar funcionário!!");
+            return ResponseEntity.ok(response);
+        }
     }
 
 

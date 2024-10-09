@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/materia")
@@ -22,18 +23,17 @@ public class MateriaController {
     }
 
     @PostMapping
-    public void inserir(@RequestBody MateriaDTO materia){
-        materiaService.inserir(materia);
+    public ResponseEntity<Map<String, String>> inserir(@RequestBody MateriaDTO materia){
+       return materiaService.inserir(materia);
     }
 
     @PutMapping
-    public MateriaDTO alterar(@RequestBody MateriaDTO materia){
+    public ResponseEntity<Map<String, String>> alterar(@RequestBody MateriaDTO materia){
         return materiaService.alterar(materia);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> excluir(@PathVariable("id") Long id){
-        materiaService.excluir(id);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<Map<String, String>> excluir(@PathVariable("id") Long id){
+        return materiaService.excluir(id);
     }
 }

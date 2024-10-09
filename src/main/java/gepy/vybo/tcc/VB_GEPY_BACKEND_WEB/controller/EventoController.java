@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/evento")
@@ -22,18 +23,17 @@ public class EventoController {
     }
 
     @PostMapping
-    public void inserir(@RequestBody EventoDTO evento){
-        eventoService.inserir(evento);
+    public ResponseEntity<Map<String, String>> inserir(@RequestBody EventoDTO evento){
+        return eventoService.inserir(evento);
     }
 
     @PutMapping
-    public EventoDTO alterar(@RequestBody EventoDTO evento){
+    public ResponseEntity<Map<String, String>> alterar(@RequestBody EventoDTO evento){
         return eventoService.alterar(evento);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> excluir(@PathVariable("id") Long id){
-        eventoService.excluir(id);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<Map<String, String>> excluir(@PathVariable("id") Long id){
+        return eventoService.excluir(id);
     }
 }

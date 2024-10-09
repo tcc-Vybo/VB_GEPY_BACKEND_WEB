@@ -8,8 +8,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.beans.BeanUtils;
 
-import java.util.Date;
-
 @Entity
 @Table (name = "aluno")
 @Getter

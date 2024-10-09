@@ -1,6 +1,5 @@
 package gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.entity;
 
-import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.dto.AlunoDTO;
 import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.dto.FuncionarioDTO;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;

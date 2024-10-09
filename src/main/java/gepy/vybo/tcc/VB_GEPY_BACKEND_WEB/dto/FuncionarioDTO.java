@@ -1,6 +1,5 @@
 package gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.dto;
 
-import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.entity.AlunoEntity;
 import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.entity.FuncionarioEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

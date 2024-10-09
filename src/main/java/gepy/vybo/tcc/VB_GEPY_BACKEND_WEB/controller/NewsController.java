@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/news")
@@ -22,19 +23,18 @@ public class NewsController {
     }
 
     @PostMapping
-    public void inserir(@RequestBody NewsDTO news){
-        newsService.inserir(news);
+    public ResponseEntity<Map<String, String>> inserir(@RequestBody NewsDTO news){
+        return newsService.inserir(news);
     }
 
     @PutMapping
-    public NewsDTO alterar(@RequestBody NewsDTO news){
+    public ResponseEntity<Map<String, String>> alterar(@RequestBody NewsDTO news){
         return newsService.alterar(news);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> excluir(@PathVariable("id") Long id){
-        newsService.excluir(id);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<Map<String, String>> excluir(@PathVariable("id") Long id){
+        return newsService.excluir(id);
     }
 
 }

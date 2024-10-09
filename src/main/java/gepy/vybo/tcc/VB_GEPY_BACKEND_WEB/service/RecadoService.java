@@ -25,48 +25,39 @@ public class RecadoService {
 
     public ResponseEntity<Map<String, String>> inserir(RecadoDTO recado){
         RecadoEntity recadoEntity = new RecadoEntity(recado);
-
         Map<String, String> response = new HashMap<>();
-
         try {
             recadoRepository.save(recadoEntity);
-            response.put("message", "Evento postado com sucesso!!");
+            response.put("message", "Recado postado com sucesso!!");
             return ResponseEntity.ok(response);
-
         }catch(Exception e){
-            response.put("error", "Evento não postado!!");
+            response.put("error", "Erro ao postar recado!!");
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
-
-
     }
 
     public ResponseEntity<Map<String, String>> alterar(RecadoDTO recado){
         RecadoEntity recadoEntity = new RecadoEntity(recado);
-
         Map<String, String> response = new HashMap<>();
-
         try{
             recadoRepository.save(recadoEntity);
-            response.put("message", "Evento alterado com sucesso!!");
+            response.put("message", "Recado alterado com sucesso!!");
             return ResponseEntity.ok(response);
         } catch (Exception e) {
-            response.put("error", "Evento não alterado!!");
+            response.put("error", "Erro ao alterar recado!!");
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
 
     public ResponseEntity<Map<String, String>> excluir(Long id){
         RecadoEntity recado = recadoRepository.findById(id).get();
-
         Map<String, String> response = new HashMap<>();
-
         try {
             recadoRepository.delete(recado);
-            response.put("message", "Evento excluido com sucesso!!");
+            response.put("message", "Recado excluido com sucesso!!");
             return ResponseEntity.ok(response);
         }catch(Exception e){
-            response.put("error", "Evento não excluido!!");
+            response.put("error", "Erro ao excluir recado!!");
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }

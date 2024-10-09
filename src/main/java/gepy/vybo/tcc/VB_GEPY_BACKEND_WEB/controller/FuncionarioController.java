@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/funcionario")
@@ -28,19 +29,18 @@ public class FuncionarioController {
     }
 
     @PostMapping
-    public void inserir(@RequestBody FuncionarioDTO funcionario){
-        funcionarioService.inserir(funcionario);
+    public ResponseEntity<Map<String, String>> inserir(@RequestBody FuncionarioDTO funcionario){
+        return funcionarioService.inserir(funcionario);
     }
 
     @PutMapping
-    public FuncionarioDTO alterar (@RequestBody FuncionarioDTO funcionario){
+    public ResponseEntity<Map<String, String>> alterar (@RequestBody FuncionarioDTO funcionario){
         return funcionarioService.alterar(funcionario);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> excluir(@PathVariable("id") Long id){
-        funcionarioService.excluir(id);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<Map<String, String>> excluir(@PathVariable("id") Long id){
+        return funcionarioService.excluir(id);
     }
 
 

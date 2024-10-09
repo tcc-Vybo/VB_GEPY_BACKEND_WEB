@@ -30,24 +30,44 @@ public class RecadoService {
 
         try {
             recadoRepository.save(recadoEntity);
-            response.put("message", "Evento inserido com sucesso!!");
+            response.put("message", "Evento postado com sucesso!!");
             return ResponseEntity.ok(response);
 
         }catch(Exception e){
-            response.put("error", "Evento não inserido!!");
+            response.put("error", "Evento não postado!!");
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
 
 
     }
 
-    public RecadoDTO alterar(RecadoDTO recado){
+    public ResponseEntity<Map<String, String>> alterar(RecadoDTO recado){
         RecadoEntity recadoEntity = new RecadoEntity(recado);
-        return new RecadoDTO(recadoRepository.save(recadoEntity));
+
+        Map<String, String> response = new HashMap<>();
+
+        try{
+            recadoRepository.save(recadoEntity);
+            response.put("message", "Evento alterado com sucesso!!");
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            response.put("error", "Evento não alterado!!");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        }
     }
 
-    public void excluir(Long id){
+    public ResponseEntity<Map<String, String>> excluir(Long id){
         RecadoEntity recado = recadoRepository.findById(id).get();
-        recadoRepository.delete(recado);
+
+        Map<String, String> response = new HashMap<>();
+
+        try {
+            recadoRepository.delete(recado);
+            response.put("message", "Evento excluido com sucesso!!");
+            return ResponseEntity.ok(response);
+        }catch(Exception e){
+            response.put("error", "Evento não excluido!!");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        }
     }
 }

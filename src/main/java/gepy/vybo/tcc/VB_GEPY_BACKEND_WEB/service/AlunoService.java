@@ -5,9 +5,13 @@ import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.entity.AlunoEntity;
 import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.repository.AlunoRepository;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -30,19 +34,49 @@ public class AlunoService {
     }
 
 
-    public void inserir(AlunoDTO aluno) {
+    public ResponseEntity<Map<String, String>> inserir(AlunoDTO aluno) {
         AlunoEntity alunoEntity = new AlunoEntity(aluno);
-        alunoRepository.save(alunoEntity);
+
+        Map<String, String> response = new HashMap<>();
+
+        try {
+            alunoRepository.save(alunoEntity);
+            response.put("message", "Aluno cadastrado com sucesso!!");
+            return ResponseEntity.ok(response);
+        }catch (Exception e){
+            response.put("error", "Erro ao cadastrar aluno!!");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        }
     }
 
-    public AlunoDTO alterar(AlunoDTO aluno) {
+    public ResponseEntity<Map<String, String>> alterar(AlunoDTO aluno) {
         AlunoEntity alunoEntity = new AlunoEntity(aluno);
-        return new AlunoDTO(alunoRepository.save(alunoEntity));
+
+        Map<String, String> response = new HashMap<>();
+
+        try {
+            alunoRepository.save(alunoEntity);
+            response.put("message", "Aluno alterado com sucesso!!");
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            response.put("error", "Erro ao alterar aluno!!");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        }
     }
 
-    public void excluir (Long id){
+    public ResponseEntity<Map<String, String>> excluir (Long id){
         AlunoEntity aluno = alunoRepository.findById(id).get();
-        alunoRepository.delete(aluno);
+
+        Map<String, String> response = new HashMap<>();
+
+        try {
+            alunoRepository.delete(aluno);
+            response.put("message", "Aluno removido com sucesso!!");
+            return ResponseEntity.ok(response);
+        }catch (Exception e){
+            response.put("error", "Erro ao remover aluno!!");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        }
     }
 
 

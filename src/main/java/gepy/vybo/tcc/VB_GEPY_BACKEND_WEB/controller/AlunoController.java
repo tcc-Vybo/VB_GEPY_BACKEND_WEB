@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/aluno")
@@ -28,19 +29,18 @@ public class AlunoController {
     }
 
     @PostMapping
-    public void inserir(@RequestBody AlunoDTO aluno){
-        alunoService.inserir(aluno);
+    public ResponseEntity<Map<String, String>> inserir(@RequestBody AlunoDTO aluno){
+        return alunoService.inserir(aluno);
     }
 
     @PutMapping
-    public AlunoDTO alterar (@RequestBody AlunoDTO aluno){
+    public ResponseEntity<Map<String, String>> alterar (@RequestBody AlunoDTO aluno){
         return alunoService.alterar(aluno);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> excluir(@PathVariable("id") Long id){
-        alunoService.excluir(id);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<Map<String, String>> excluir(@PathVariable("id") Long id){
+       return alunoService.excluir(id);
     }
 
 

@@ -28,14 +28,13 @@ public class RecadoController {
     }
 
     @PutMapping
-    public RecadoDTO alterar(@RequestBody RecadoDTO recado){
+    public ResponseEntity<Map<String, String>> alterar(@RequestBody RecadoDTO recado){
         return recadoService.alterar(recado);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> excluir (@PathVariable("id") Long id){
-        recadoService.excluir(id);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<Map<String, String>> excluir (@PathVariable("id") Long id){
+        return recadoService.excluir(id);
     }
 
 }

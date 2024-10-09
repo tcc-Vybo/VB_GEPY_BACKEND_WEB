@@ -13,13 +13,16 @@ public class TurmaDTO {
 
     private Long id;
     private String nome;
-    private String materia;
+    private MateriaDTO materia;
     private FuncionarioDTO professor;
 
     public TurmaDTO(TurmaEntity turma) {
         BeanUtils.copyProperties(turma, this);
         if(turma != null && turma.getProfessor() != null) {
             this.professor = new FuncionarioDTO(turma.getProfessor());
+        }
+        if(turma != null && turma.getMateria() != null) {
+            this.materia = new MateriaDTO(turma.getMateria());
         }
     }
 

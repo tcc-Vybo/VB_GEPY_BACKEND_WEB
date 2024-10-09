@@ -24,6 +24,7 @@ public class AlunoDTO {
     private String genero;
     private String corRaca;
     private String necessidades;
+    private TurmaDTO turma;
 
     // Endereço
     private String cep;
@@ -53,5 +54,8 @@ public class AlunoDTO {
 
     public AlunoDTO(AlunoEntity aluno) {
         BeanUtils.copyProperties(aluno, this);
+        if(aluno != null && aluno.getTurma() != null) {
+            this.turma = new TurmaDTO(aluno.getTurma());
+        }
     }
 }

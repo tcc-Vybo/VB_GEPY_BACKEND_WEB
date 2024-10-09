@@ -23,24 +23,21 @@ public class TurmaEntity {
     @Column(nullable = false)
     private String nome;
 
-    @Column(nullable = false)
-    private String materia;
+    @OneToOne
+    @JoinColumn(name = "id_materia", nullable = false)
+    private MateriaEntity materia;
 
     @ManyToOne
     @JoinColumn(name = "id_professor", nullable = false)
     private FuncionarioEntity professor;
 
-    @ManyToOne
-    @JoinColumn(name = "id_aluno", nullable = false)
-    private AlunoEntity aluno;
-
     public TurmaEntity(TurmaDTO turma) {
         BeanUtils.copyProperties(turma, this);
-        if(turma != null && turma.getAluno() != null) {
-            this.aluno = new AlunoEntity(turma.getAluno());
-        }
         if(turma != null && turma.getProfessor() != null) {
             this.professor = new FuncionarioEntity(turma.getProfessor());
+        }
+        if(turma != null && turma.getMateria() != null) {
+            this.materia = new MateriaEntity(turma.getMateria());
         }
     }
 }

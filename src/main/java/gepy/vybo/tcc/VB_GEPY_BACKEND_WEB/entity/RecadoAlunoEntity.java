@@ -1,6 +1,6 @@
 package gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.entity;
 
-import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.dto.RecadoDTO;
+import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.dto.RecadoAlunoDTO;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -9,12 +9,12 @@ import lombok.Setter;
 import org.springframework.beans.BeanUtils;
 
 @Entity
-@Table(name = "recado")
+@Table(name = "recado_aluno")
 @Getter
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class RecadoEntity {
+public class RecadoAlunoEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -37,13 +37,16 @@ public class RecadoEntity {
     @Column(nullable = false)
     private String horarioAtual;
 
-    public RecadoEntity(RecadoDTO recado){
-        BeanUtils.copyProperties(recado, this);
-        if(recado != null && recado.getRemetente() != null){
-            this.remetente = new FuncionarioEntity(recado.getRemetente());
+    @Column(nullable = false)
+    private String status;
+
+    public RecadoAlunoEntity(RecadoAlunoDTO recadoAluno){
+        BeanUtils.copyProperties(recadoAluno, this);
+        if(recadoAluno != null && recadoAluno.getRemetente() != null){
+            this.remetente = new FuncionarioEntity(recadoAluno.getRemetente());
         }
-        if(recado != null && recado.getDestinatario() != null){
-            this.destinatario = new AlunoEntity(recado.getDestinatario());
+        if(recadoAluno != null && recadoAluno.getDestinatario() != null){
+            this.destinatario = new AlunoEntity(recadoAluno.getDestinatario());
         }
     }
 }

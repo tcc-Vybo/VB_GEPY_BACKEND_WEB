@@ -1,8 +1,8 @@
 package gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.service;
 
-import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.dto.RecadoDTO;
-import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.entity.RecadoEntity;
-import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.repository.RecadoRepository;
+import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.dto.RecadoAlunoDTO;
+import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.entity.RecadoAlunoEntity;
+import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.repository.RecadoAlunoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,21 +13,21 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class RecadoService {
+public class RecadoAlunoService {
 
     @Autowired
-    private RecadoRepository recadoRepository;
+    private RecadoAlunoRepository recadoAlunoRepository;
 
-    public List<RecadoDTO> listarTodos(){
-        List<RecadoEntity> recado = recadoRepository.findAll();
-        return recado.stream().map(RecadoDTO::new).toList();
+    public List<RecadoAlunoDTO> listarTodos(){
+        List<RecadoAlunoEntity> recadoAluno = recadoAlunoRepository.findAll();
+        return recadoAluno.stream().map(RecadoAlunoDTO::new).toList();
     }
 
-    public ResponseEntity<Map<String, String>> inserir(RecadoDTO recado){
-        RecadoEntity recadoEntity = new RecadoEntity(recado);
+    public ResponseEntity<Map<String, String>> inserir(RecadoAlunoDTO recadoAluno){
+        RecadoAlunoEntity recadoAlunoEntity = new RecadoAlunoEntity(recadoAluno);
         Map<String, String> response = new HashMap<>();
         try {
-            recadoRepository.save(recadoEntity);
+            recadoAlunoRepository.save(recadoAlunoEntity);
             response.put("message", "Recado postado com sucesso!!");
             return ResponseEntity.ok(response);
         }catch(Exception e){
@@ -36,11 +36,11 @@ public class RecadoService {
         }
     }
 
-    public ResponseEntity<Map<String, String>> alterar(RecadoDTO recado){
-        RecadoEntity recadoEntity = new RecadoEntity(recado);
+    public ResponseEntity<Map<String, String>> alterar(RecadoAlunoDTO recadoAluno){
+        RecadoAlunoEntity recadoAlunoEntity = new RecadoAlunoEntity(recadoAluno);
         Map<String, String> response = new HashMap<>();
         try{
-            recadoRepository.save(recadoEntity);
+            recadoAlunoRepository.save(recadoAlunoEntity);
             response.put("message", "Recado alterado com sucesso!!");
             return ResponseEntity.ok(response);
         } catch (Exception e) {
@@ -50,10 +50,10 @@ public class RecadoService {
     }
 
     public ResponseEntity<Map<String, String>> excluir(Long id){
-        RecadoEntity recado = recadoRepository.findById(id).get();
+        RecadoAlunoEntity recadoAluno = recadoAlunoRepository.findById(id).get();
         Map<String, String> response = new HashMap<>();
         try {
-            recadoRepository.delete(recado);
+            recadoAlunoRepository.delete(recadoAluno);
             response.put("message", "Recado excluido com sucesso!!");
             return ResponseEntity.ok(response);
         }catch(Exception e){

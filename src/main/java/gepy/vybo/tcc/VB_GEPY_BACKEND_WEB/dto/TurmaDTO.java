@@ -13,7 +13,7 @@ public class TurmaDTO {
 
     private Long id;
     private String nome;
-    private MateriaDTO materia;
+    private DisciplinaDTO disciplina;
     private FuncionarioDTO professor;
 
     public TurmaDTO(TurmaEntity turma) {
@@ -21,8 +21,8 @@ public class TurmaDTO {
         if(turma != null && turma.getProfessor() != null) {
             this.professor = new FuncionarioDTO(turma.getProfessor());
         }
-        if(turma != null && turma.getMateria() != null) {
-            this.materia = new MateriaDTO(turma.getMateria());
+        if(turma != null && turma.getDisciplina() != null) {
+            this.disciplina = new DisciplinaDTO(turma.getDisciplina());
         }
     }
 

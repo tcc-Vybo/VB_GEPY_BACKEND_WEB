@@ -1,6 +1,6 @@
 package gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.entity;
 
-import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.dto.EventoDTO;
+import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.dto.RecadoTurmaDTO;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -9,12 +9,12 @@ import lombok.Setter;
 import org.springframework.beans.BeanUtils;
 
 @Entity
-@Table(name = "evento")
+@Table(name = "recado_turma")
 @Getter
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class EventoEntity {
+public class RecadoTurmaEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -40,13 +40,13 @@ public class EventoEntity {
     @JoinColumn(name = "id_turma", nullable = false)
     private TurmaEntity destinatario;
 
-    public EventoEntity(EventoDTO evento){
-        BeanUtils.copyProperties(evento, this);
-        if(evento != null && evento.getRemetente() != null){
-            this.remetente = new FuncionarioEntity(evento.getRemetente());
+    public RecadoTurmaEntity(RecadoTurmaDTO recadoTurma){
+        BeanUtils.copyProperties(recadoTurma, this);
+        if(recadoTurma != null && recadoTurma.getRemetente() != null){
+            this.remetente = new FuncionarioEntity(recadoTurma.getRemetente());
         }
-        if(evento != null && evento.getDestinatario() != null){
-            this.destinatario = new TurmaEntity(evento.getDestinatario());
+        if(recadoTurma != null && recadoTurma.getDestinatario() != null){
+            this.destinatario = new TurmaEntity(recadoTurma.getDestinatario());
         }
     }
 }

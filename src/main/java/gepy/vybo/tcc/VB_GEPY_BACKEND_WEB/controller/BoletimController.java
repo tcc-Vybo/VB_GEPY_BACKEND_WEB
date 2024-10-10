@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/boletim")
@@ -22,18 +23,17 @@ public class BoletimController {
     }
 
     @PostMapping
-    public void inserir(@RequestBody BoletimDTO boletim){
-        boletimService.inserir(boletim);
+    public ResponseEntity<Map<String, String>> inserir(@RequestBody BoletimDTO boletim){
+        return boletimService.inserir(boletim);
     }
 
     @PutMapping
-    public BoletimDTO alterar(@RequestBody BoletimDTO boletim){
+    public ResponseEntity<Map<String, String>> alterar(@RequestBody BoletimDTO boletim){
         return boletimService.alterar(boletim);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> excluir(@PathVariable("id") Long id){
-        boletimService.excluir(id);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<Map<String, String>> excluir(@PathVariable("id") Long id){
+        return boletimService.excluir(id);
     }
 }

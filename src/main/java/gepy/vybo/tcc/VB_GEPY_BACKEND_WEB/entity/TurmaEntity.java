@@ -24,8 +24,8 @@ public class TurmaEntity {
     private String nome;
 
     @OneToOne
-    @JoinColumn(name = "id_materia", nullable = false)
-    private MateriaEntity materia;
+    @JoinColumn(name = "id_disicplina", nullable = false)
+    private DisciplinaEntity disciplina;
 
     @ManyToOne
     @JoinColumn(name = "id_professor", nullable = false)
@@ -36,8 +36,8 @@ public class TurmaEntity {
         if(turma != null && turma.getProfessor() != null) {
             this.professor = new FuncionarioEntity(turma.getProfessor());
         }
-        if(turma != null && turma.getMateria() != null) {
-            this.materia = new MateriaEntity(turma.getMateria());
+        if(turma != null && turma.getDisciplina() != null) {
+            this.disciplina = new DisciplinaEntity(turma.getDisciplina());
         }
     }
 }

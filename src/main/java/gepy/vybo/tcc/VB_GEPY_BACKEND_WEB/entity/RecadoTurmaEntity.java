@@ -17,7 +17,7 @@ import org.springframework.beans.BeanUtils;
 public class RecadoTurmaEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)

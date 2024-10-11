@@ -17,6 +17,7 @@ public class RecadoTurmaDTO {
     private String hora;
     private FuncionarioDTO remetente;
     private TurmaDTO destinatario;
+    private String status;
 
     public RecadoTurmaDTO(RecadoTurmaEntity recadoTurma) {
         BeanUtils.copyProperties(recadoTurma, this);

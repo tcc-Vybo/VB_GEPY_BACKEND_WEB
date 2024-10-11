@@ -40,6 +40,9 @@ public class RecadoTurmaEntity {
     @JoinColumn(name = "id_turma", nullable = false)
     private TurmaEntity destinatario;
 
+    @Column(nullable = false)
+    private String status;
+
     public RecadoTurmaEntity(RecadoTurmaDTO recadoTurma){
         BeanUtils.copyProperties(recadoTurma, this);
         if(recadoTurma != null && recadoTurma.getRemetente() != null){

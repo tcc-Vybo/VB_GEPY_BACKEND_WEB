@@ -45,9 +45,9 @@ public class AlunoEntity {
     @Column(nullable = false)
     private String necessidades;
 
-    @OneToOne
-    @JoinColumn(name = "id_turma", nullable = false)
-    private TurmaEntity turma;
+//    @OneToOne
+//    @JoinColumn(name = "id_turma", nullable = false)
+//    private TurmaEntity turma;
 
     // Endereço
     @Column(nullable = false)
@@ -103,10 +103,10 @@ public class AlunoEntity {
     @Column(nullable = false)
     private String emailResponsavel;
 
-    public AlunoEntity(AlunoDTO aluno) {
-        BeanUtils.copyProperties(aluno, this);
-        if(aluno != null && aluno.getTurma() != null) {
-            this.turma = new TurmaEntity(aluno.getTurma());
-        }
-    }
+//    public AlunoEntity(AlunoDTO aluno) {
+//        BeanUtils.copyProperties(aluno, this);
+//        if(aluno != null && aluno.getTurma() != null) {
+//            this.turma = new TurmaEntity(aluno.getTurma());
+//        }
+//    }
 }

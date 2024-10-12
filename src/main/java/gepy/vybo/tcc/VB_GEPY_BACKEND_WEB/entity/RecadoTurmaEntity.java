@@ -32,7 +32,7 @@ public class RecadoTurmaEntity {
     @Column(nullable = false)
     private String hora;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "id_funcionario", nullable = false)
     private FuncionarioEntity remetente;
 

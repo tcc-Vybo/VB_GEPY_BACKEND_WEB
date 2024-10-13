@@ -59,7 +59,7 @@ public class FuncionarioService {
         FuncionarioEntity funcionario= funcionarioRepository.findById(id).get();
         Map<String, String> response = new HashMap<>();
         try {
-            funcionarioRepository.delete(funcionario);
+            funcionarioRepository.deleteById(id);
             response.put("message", "Funcionário deletado com sucesso!!");
             return ResponseEntity.ok(response);
         }catch (Exception e){

@@ -19,7 +19,7 @@ public class FuncionarioService {
     private FuncionarioRepository funcionarioRepository;
 
     public List<FuncionarioDTO> ListarTodos(){
-        List<FuncionarioEntity> funcionarios = funcionarioRepository.findAll();
+        List<FuncionarioEntity> funcionarios = funcionarioRepository.findAllOrderedById();
         return funcionarios.stream().map(FuncionarioDTO::new).toList();
     }
 

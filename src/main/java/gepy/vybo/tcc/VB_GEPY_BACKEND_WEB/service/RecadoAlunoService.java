@@ -19,7 +19,7 @@ public class RecadoAlunoService {
     private RecadoAlunoRepository recadoAlunoRepository;
 
     public List<RecadoAlunoDTO> listarTodos(){
-        List<RecadoAlunoEntity> recadoAluno = recadoAlunoRepository.findAll();
+        List<RecadoAlunoEntity> recadoAluno = recadoAlunoRepository.findAllOrderedById();
         return recadoAluno.stream().map(RecadoAlunoDTO::new).toList();
     }
 

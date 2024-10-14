@@ -19,7 +19,7 @@ public class DisciplinaService {
     private DisciplinaRepository disciplinaRepository;
 
     public List<DisciplinaDTO> listarTodos(){
-        List<DisciplinaEntity> disciplinas = disciplinaRepository.findAll();
+        List<DisciplinaEntity> disciplinas = disciplinaRepository.findAllOrderedById();
         return disciplinas.stream().map(DisciplinaDTO::new).toList();
     }
 

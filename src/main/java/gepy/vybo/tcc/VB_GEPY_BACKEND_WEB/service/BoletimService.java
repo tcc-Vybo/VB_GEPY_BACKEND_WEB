@@ -19,7 +19,7 @@ public class BoletimService {
     private BoletimRepository boletimRepository;
 
     public List<BoletimDTO> listarTodos(){
-        List<BoletimEntity> boletim = boletimRepository.findAll();
+        List<BoletimEntity> boletim = boletimRepository.findAllOrderedById();
         return boletim.stream().map(BoletimDTO::new).toList();
     }
 

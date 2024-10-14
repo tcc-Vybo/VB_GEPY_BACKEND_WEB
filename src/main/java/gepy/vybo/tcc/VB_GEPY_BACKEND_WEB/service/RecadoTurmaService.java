@@ -19,7 +19,7 @@ public class RecadoTurmaService {
     private RecadoTurmaRepository recadoTurmaRepository;
 
     public List<RecadoTurmaDTO> listarTodos(){
-        List<RecadoTurmaEntity> recadoTurma = recadoTurmaRepository.findAll();
+        List<RecadoTurmaEntity> recadoTurma = recadoTurmaRepository.findAllOrderedById();
         return recadoTurma.stream().map(RecadoTurmaDTO::new).toList();
     }
 

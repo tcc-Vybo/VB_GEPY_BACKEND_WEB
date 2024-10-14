@@ -28,7 +28,7 @@ public class AlunoService {
     }
 
     public List<AlunoDTO> ListarTodos(){
-        List<AlunoEntity> aluno = alunoRepository.findAll();
+        List<AlunoEntity> aluno = alunoRepository.findAllOrderedById();
         return aluno.stream().map(AlunoDTO::new).toList();
     }
 

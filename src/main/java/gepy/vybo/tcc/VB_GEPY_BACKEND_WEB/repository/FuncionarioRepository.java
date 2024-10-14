@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface FuncionarioRepository extends JpaRepository<FuncionarioEntity, Long> {
 
-    @Query(value = "SELECT * FROM funcionario WHERE nome_completo LIKE %?%", nativeQuery = true)
+    @Query(value = "SELECT * FROM funcionario WHERE nome_completo LIKE %?% ORDER BY id", nativeQuery = true)
     List<FuncionarioEntity> findFuncionarioByName(String nomeCompleto);
 }

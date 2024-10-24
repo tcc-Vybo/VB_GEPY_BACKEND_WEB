@@ -19,7 +19,7 @@ public class FuncionarioService {
     private FuncionarioRepository funcionarioRepository;
 
     public List<FuncionarioDTO> ListarTodos(){
-        List<FuncionarioEntity> funcionarios = funcionarioRepository.findAll();
+        List<FuncionarioEntity> funcionarios = funcionarioRepository.findAllOrderedById();
         return funcionarios.stream().map(FuncionarioDTO::new).toList();
     }
 
@@ -59,7 +59,7 @@ public class FuncionarioService {
         FuncionarioEntity funcionario= funcionarioRepository.findById(id).get();
         Map<String, String> response = new HashMap<>();
         try {
-            funcionarioRepository.delete(funcionario);
+            funcionarioRepository.deleteById(id);
             response.put("message", "Funcionário deletado com sucesso!!");
             return ResponseEntity.ok(response);
         }catch (Exception e){

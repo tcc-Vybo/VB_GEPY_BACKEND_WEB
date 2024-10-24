@@ -19,7 +19,7 @@ public class NewsService {
     private NewsRepository newsRepository;
 
     public List<NewsDTO> listarTodos(){
-        List<NewsEntity> news = newsRepository.findAll();
+        List<NewsEntity> news = newsRepository.findAllOrderedById();
         return news.stream().map(NewsDTO::new).toList();
     }
 

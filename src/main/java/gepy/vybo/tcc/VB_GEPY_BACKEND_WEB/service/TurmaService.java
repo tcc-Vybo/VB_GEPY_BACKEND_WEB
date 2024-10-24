@@ -20,7 +20,7 @@ public class TurmaService {
     private TurmaRepository turmaRepository;
 
     public List<TurmaDTO> listarTodos(){
-        List<TurmaEntity> turma = turmaRepository.findAll();
+        List<TurmaEntity> turma = turmaRepository.findAllOrderedById();
         return turma.stream().map(TurmaDTO::new).toList();
     }
 

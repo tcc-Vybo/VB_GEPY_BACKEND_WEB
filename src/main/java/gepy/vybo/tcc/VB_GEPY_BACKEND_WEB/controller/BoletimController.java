@@ -22,6 +22,12 @@ public class BoletimController {
         return boletimService.listarTodos();
     }
 
+    @GetMapping("/buscar/{disciplina}")
+    public ResponseEntity<List<BoletimDTO>> buscarPorDisciplina(@PathVariable("disciplina") Long idDisciplina){
+        List<BoletimDTO> notas = boletimService.buscarPorDisciplina(idDisciplina);
+        return ResponseEntity.ok(notas);
+    }
+
     @PostMapping
     public ResponseEntity<Map<String, String>> inserir(@RequestBody BoletimDTO boletim){
         return boletimService.inserir(boletim);

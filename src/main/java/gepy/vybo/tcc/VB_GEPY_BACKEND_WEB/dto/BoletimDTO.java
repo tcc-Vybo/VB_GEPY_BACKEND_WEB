@@ -13,6 +13,7 @@ public class BoletimDTO {
 
     private Long id;
     private AlunoDTO aluno;
+    private DisciplinaDTO disciplina;
     private int notaPrimeiroBim;
     private int faltaPrimeiroBim;
     private int notaSegundoBim;
@@ -27,6 +28,9 @@ public class BoletimDTO {
         BeanUtils.copyProperties(boletim, this);
         if(boletim != null && boletim.getAluno() != null){
             this.aluno = new AlunoDTO(boletim.getAluno());
+        }
+        if(boletim != null && boletim.getDisciplina() != null){
+            this.disciplina = new DisciplinaDTO(boletim.getDisciplina());
         }
     }
 }

@@ -20,9 +20,13 @@ public class BoletimEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "id_aluno", nullable = false)
     private AlunoEntity aluno;
+
+    @ManyToOne
+    @JoinColumn(name = "id_disciplina", nullable = false)
+    private DisciplinaEntity disciplina;
 
     @Column(nullable = false)
     private int notaPrimeiroBim;
@@ -55,6 +59,9 @@ public class BoletimEntity {
         BeanUtils.copyProperties(boletim, this);
         if(boletim != null && boletim.getAluno() != null){
             this.aluno = new AlunoEntity(boletim.getAluno());
+        }
+        if(boletim != null && boletim.getDisciplina() != null){
+            this.disciplina = new DisciplinaEntity(boletim.getDisciplina());
         }
     }
 }

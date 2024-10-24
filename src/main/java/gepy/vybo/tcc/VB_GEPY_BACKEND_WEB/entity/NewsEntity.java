@@ -26,6 +26,9 @@ public class NewsEntity {
     @Column(nullable = false)
     private String texto;
 
+    @Column(nullable = false)
+    private String imagemUrl;
+
     public NewsEntity(NewsDTO news){
         BeanUtils.copyProperties(news, this);
     }

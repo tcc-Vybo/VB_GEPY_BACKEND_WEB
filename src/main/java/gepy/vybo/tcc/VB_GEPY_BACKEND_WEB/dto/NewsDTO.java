@@ -14,6 +14,7 @@ public class NewsDTO {
     private Long id;
     private String titulo;
     private String texto;
+    private String imagemUrl;
 
     public NewsDTO(NewsEntity news){
         BeanUtils.copyProperties(news,this);

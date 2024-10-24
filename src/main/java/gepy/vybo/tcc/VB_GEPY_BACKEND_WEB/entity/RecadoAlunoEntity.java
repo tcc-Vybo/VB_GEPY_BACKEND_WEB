@@ -20,11 +20,11 @@ public class RecadoAlunoEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "id_funcionario", nullable = false)
     private FuncionarioEntity remetente;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "id_aluno",nullable = false)
     private AlunoEntity destinatario;
 

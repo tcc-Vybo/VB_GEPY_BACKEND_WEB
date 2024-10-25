@@ -43,6 +43,9 @@ public class RecadoTurmaEntity {
     @Column(nullable = false)
     private String status;
 
+    @Column(nullable = false)
+    private String tipoRecado;
+
     public RecadoTurmaEntity(RecadoTurmaDTO recadoTurma){
         BeanUtils.copyProperties(recadoTurma, this);
         if(recadoTurma != null && recadoTurma.getRemetente() != null){

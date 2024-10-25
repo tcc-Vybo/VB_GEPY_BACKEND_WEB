@@ -17,6 +17,7 @@ public class RecadoAlunoDTO {
     private String dataAtual;
     private String horarioAtual;
     private String status;
+    private TipoRecadoDTO tipoRecado;
 
     public RecadoAlunoDTO(RecadoAlunoEntity recadoAluno) {
         BeanUtils.copyProperties(recadoAluno, this);
@@ -25,6 +26,9 @@ public class RecadoAlunoDTO {
         }
         if(recadoAluno != null && recadoAluno.getDestinatario() != null){
             this.destinatario = new AlunoDTO(recadoAluno.getDestinatario());
+        }
+        if(recadoAluno != null && recadoAluno.getTipoRecado() != null){
+            this.tipoRecado = new TipoRecadoDTO(recadoAluno.getTipoRecado());
         }
     }
 }

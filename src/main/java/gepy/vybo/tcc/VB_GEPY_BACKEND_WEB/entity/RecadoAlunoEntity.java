@@ -40,6 +40,10 @@ public class RecadoAlunoEntity {
     @Column(nullable = false)
     private String status;
 
+    @ManyToOne
+    @JoinColumn(name = "id_tiporecado", nullable = false)
+    private TipoRecadoEntity tipoRecado;
+
     public RecadoAlunoEntity(RecadoAlunoDTO recadoAluno){
         BeanUtils.copyProperties(recadoAluno, this);
         if(recadoAluno != null && recadoAluno.getRemetente() != null){
@@ -47,6 +51,9 @@ public class RecadoAlunoEntity {
         }
         if(recadoAluno != null && recadoAluno.getDestinatario() != null){
             this.destinatario = new AlunoEntity(recadoAluno.getDestinatario());
+        }
+        if(recadoAluno != null && recadoAluno.getTipoRecado() != null){
+            this.tipoRecado = new TipoRecadoEntity(recadoAluno.getTipoRecado());
         }
     }
 }

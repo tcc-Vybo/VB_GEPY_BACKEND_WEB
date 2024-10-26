@@ -43,8 +43,9 @@ public class RecadoTurmaEntity {
     @Column(nullable = false)
     private String status;
 
-    @Column(nullable = false)
-    private String tipoRecado;
+    @ManyToOne
+    @JoinColumn(name = "id_tiporecado", nullable = false)
+    private TipoRecadoEntity tipoRecado;
 
     public RecadoTurmaEntity(RecadoTurmaDTO recadoTurma){
         BeanUtils.copyProperties(recadoTurma, this);
@@ -53,6 +54,9 @@ public class RecadoTurmaEntity {
         }
         if(recadoTurma != null && recadoTurma.getDestinatario() != null){
             this.destinatario = new TurmaEntity(recadoTurma.getDestinatario());
+        }
+        if(recadoTurma != null && recadoTurma.getTipoRecado() != null){
+            this.tipoRecado = new TipoRecadoEntity(recadoTurma.getTipoRecado());
         }
     }
 }

@@ -25,7 +25,7 @@ public class RecadoAlunoEntity {
     private FuncionarioEntity remetente;
 
     @ManyToOne
-    @JoinColumn(name = "id_aluno",nullable = false)
+    @JoinColumn(name = "id_aluno", nullable = false)
     private AlunoEntity destinatario;
 
     @Column(nullable = false)

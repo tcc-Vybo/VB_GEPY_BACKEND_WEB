@@ -18,7 +18,7 @@ public class RecadoTurmaDTO {
     private FuncionarioDTO remetente;
     private TurmaDTO destinatario;
     private String status;
-    private String tipoRecado;
+    private TipoRecadoDTO tipoRecado;
 
     public RecadoTurmaDTO(RecadoTurmaEntity recadoTurma) {
         BeanUtils.copyProperties(recadoTurma, this);
@@ -27,6 +27,9 @@ public class RecadoTurmaDTO {
         }
         if(recadoTurma != null && recadoTurma.getDestinatario() != null) {
             this.destinatario = new TurmaDTO(recadoTurma.getDestinatario());
+        }
+        if(recadoTurma != null && recadoTurma.getTipoRecado() != null) {
+            this.tipoRecado = new TipoRecadoDTO(recadoTurma.getTipoRecado());
         }
     }
 }

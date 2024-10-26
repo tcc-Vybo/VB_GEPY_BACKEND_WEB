@@ -22,6 +22,12 @@ public class RecadoTurmaController {
         return recadoTurmaService.listarTodos();
     }
 
+    @GetMapping("/buscar/{tipoRecado}")
+    public ResponseEntity<List<RecadoTurmaDTO>> buscarPorTipoRecado(@PathVariable("tipoRecado") Long idTipoRecado){
+        List<RecadoTurmaDTO> recados = recadoTurmaService.buscarPorTipoRecado(idTipoRecado);
+        return ResponseEntity.ok(recados);
+    }
+
     @PostMapping
     public ResponseEntity<Map<String, String>> inserir(@RequestBody RecadoTurmaDTO recadoTurma){
         return recadoTurmaService.inserir(recadoTurma);

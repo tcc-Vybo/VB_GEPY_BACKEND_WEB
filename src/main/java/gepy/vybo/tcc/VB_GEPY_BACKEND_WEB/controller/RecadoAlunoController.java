@@ -22,6 +22,12 @@ public class RecadoAlunoController {
         return recadoAlunoService.listarTodos();
     }
 
+    @GetMapping("/buscar/{tipoRecado}")
+    public ResponseEntity<List<RecadoAlunoDTO>> buscarPorTipoRecado(@PathVariable("tipoRecado") Long idTipoRecado){
+        List<RecadoAlunoDTO> recados = recadoAlunoService.buscarPorTipoRecado(idTipoRecado);
+        return ResponseEntity.ok(recados);
+    }
+
     @PostMapping
     public ResponseEntity<Map<String, String>> inserir(@RequestBody RecadoAlunoDTO recadoAluno){
        return recadoAlunoService.inserir(recadoAluno);

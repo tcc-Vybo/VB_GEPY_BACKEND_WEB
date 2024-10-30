@@ -23,10 +23,6 @@ public class TurmaEntity {
     @Column(nullable = false)
     private String nome;
 
-    @OneToOne
-    @JoinColumn(name = "id_disicplina", nullable = false)
-    private DisciplinaEntity disciplina;
-
     @ManyToOne
     @JoinColumn(name = "id_professor", nullable = false)
     private FuncionarioEntity professor;
@@ -35,9 +31,6 @@ public class TurmaEntity {
         BeanUtils.copyProperties(turma, this);
         if(turma != null && turma.getProfessor() != null) {
             this.professor = new FuncionarioEntity(turma.getProfessor());
-        }
-        if(turma != null && turma.getDisciplina() != null) {
-            this.disciplina = new DisciplinaEntity(turma.getDisciplina());
         }
     }
 }

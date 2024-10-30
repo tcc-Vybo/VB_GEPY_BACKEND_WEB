@@ -29,6 +29,11 @@ public class FuncionarioService {
                 .collect(Collectors.toList());
     }
 
+    public FuncionarioDTO buscarPorCpfEmail(String cpf, String email) {
+        FuncionarioEntity funcionario = funcionarioRepository.findByEmailAndCpf(cpf, email);
+        return new FuncionarioDTO(funcionario);
+    }
+
     public ResponseEntity<Map<String, String>> inserir(FuncionarioDTO funcionario){
         FuncionarioEntity funcionarioEntity = new FuncionarioEntity(funcionario);
         Map<String, String> response = new HashMap<>();

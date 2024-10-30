@@ -28,6 +28,12 @@ public class FuncionarioController {
         return ResponseEntity.ok(funcionarios);
     }
 
+    @GetMapping("/login/{cpf}/{email}")
+    public ResponseEntity<FuncionarioDTO> buscarPorCpfEmail(@PathVariable("cpf") String cpf, @PathVariable("email") String email){
+        FuncionarioDTO funcionario = funcionarioService.buscarPorCpfEmail(cpf, email);
+        return ResponseEntity.ok(funcionario);
+    }
+
     @PostMapping
     public ResponseEntity<Map<String, String>> inserir(@RequestBody FuncionarioDTO funcionario){
         return funcionarioService.inserir(funcionario);

@@ -13,4 +13,6 @@ public interface FuncionarioRepository extends JpaRepository<FuncionarioEntity, 
     List<FuncionarioEntity> findAllOrderedById();
     @Query(value = "SELECT * FROM funcionario WHERE nome_completo LIKE %?% ORDER BY id", nativeQuery = true)
     List<FuncionarioEntity> findFuncionarioByName(String nomeCompleto);
+    @Query(value = "SELECT * FROM funcionario WHERE email = ? and cpf = ?", nativeQuery = true)
+    FuncionarioEntity findByEmailAndCpf(String email, String cpf);
 }

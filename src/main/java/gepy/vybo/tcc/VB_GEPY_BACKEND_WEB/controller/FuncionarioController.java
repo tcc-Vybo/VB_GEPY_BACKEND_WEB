@@ -29,7 +29,7 @@ public class FuncionarioController {
     }
 
     @GetMapping("/login/{cpf}/{email}")
-    public ResponseEntity<FuncionarioDTO> buscarPorCpfEmail(@PathVariable("cpf") String cpf, @PathVariable("email") String email){
+    public ResponseEntity<FuncionarioDTO> buscarPorCpfEmail(@PathVariable String cpf, @PathVariable String email){
         FuncionarioDTO funcionario = funcionarioService.buscarPorCpfEmail(cpf, email);
         return ResponseEntity.ok(funcionario);
     }

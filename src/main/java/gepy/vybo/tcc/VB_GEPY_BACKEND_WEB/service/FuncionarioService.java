@@ -30,7 +30,7 @@ public class FuncionarioService {
     }
 
     public FuncionarioDTO buscarPorCpfEmail(String cpf, String email) {
-        FuncionarioEntity funcionario = funcionarioRepository.findByEmailAndCpf(cpf, email);
+        FuncionarioEntity funcionario = funcionarioRepository.findByCpfAndEmail(cpf, email);
         return new FuncionarioDTO(funcionario);
     }
 
@@ -64,7 +64,7 @@ public class FuncionarioService {
         FuncionarioEntity funcionario= funcionarioRepository.findById(id).get();
         Map<String, String> response = new HashMap<>();
         try {
-            funcionarioRepository.deleteById(id);
+            funcionarioRepository.delete(funcionario);
             response.put("message", "Funcionário deletado com sucesso!!");
             return ResponseEntity.ok(response);
         }catch (Exception e){

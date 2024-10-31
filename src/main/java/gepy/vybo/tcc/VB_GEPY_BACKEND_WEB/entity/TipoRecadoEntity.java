@@ -23,6 +23,14 @@ public class TipoRecadoEntity {
     @Column(nullable = false)
     private String nome;
 
+    @PrePersist
+    @PreUpdate
+    public void prePersistAndUpdate(){
+        if (this.nome != null){
+            this.nome = this.nome.toUpperCase();
+        }
+    }
+
     public TipoRecadoEntity(TipoRecadoDTO tipoRecado) {
         BeanUtils.copyProperties(tipoRecado, this);
     }

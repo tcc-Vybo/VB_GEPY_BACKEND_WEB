@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface DisciplinaRepository extends JpaRepository<DisciplinaEntity, Long> {
 
-    @Query(value = "SELECT d.* FROM disciplina d.* ORDER BY d.id", nativeQuery = true)
+    @Query(value = "SELECT d.* FROM disciplina d ORDER BY d.id", nativeQuery = true)
     List<DisciplinaEntity> findAllOrderedById();
 
     @Query(value = "SELECT d.* FROM disciplina d WHERE d.nome LIKE %?% ORDER BY d.id", nativeQuery = true)

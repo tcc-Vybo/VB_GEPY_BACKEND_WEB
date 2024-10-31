@@ -99,6 +99,14 @@ public class AlunoEntity {
     @Column(nullable = false)
     private String emailResponsavel;
 
+    @PrePersist
+    @PreUpdate
+    public void prePersistAndUpdate(){
+        if (this.nomeCompleto != null){
+            this.nomeCompleto = this.nomeCompleto.toUpperCase();
+        }
+    }
+
     public AlunoEntity(AlunoDTO aluno) {
         BeanUtils.copyProperties(aluno, this);
     }

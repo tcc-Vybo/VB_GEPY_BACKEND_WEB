@@ -23,6 +23,14 @@ public class TurmaEntity {
     @Column(nullable = false)
     private String nome;
 
+    @PrePersist
+    @PreUpdate
+    public void prePersistAndUpdate(){
+        if (this.nome != null){
+            this.nome = this.nome.toUpperCase();
+        }
+    }
+
     public TurmaEntity(TurmaDTO turma) {
         BeanUtils.copyProperties(turma, this);
     }

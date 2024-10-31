@@ -26,6 +26,14 @@ public class DisciplinaEntity {
     @Column(nullable = false)
     private String descricao;
 
+    @PrePersist
+    @PreUpdate
+    public void prePersistAndUpdate(){
+        if (this.nome != null){
+            this.nome = this.nome.toUpperCase();
+        }
+    }
+
     public DisciplinaEntity(DisciplinaDTO disciplina) {
         BeanUtils.copyProperties(disciplina, this);
     }

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class AlunoTurmaService {
@@ -21,6 +22,11 @@ public class AlunoTurmaService {
     public List<AlunoTurmaDTO> listarTodos(){
         List<AlunoTurmaEntity> alunoTurma = alunoTurmaRepository.findAllOrderedById();
         return alunoTurma.stream().map(AlunoTurmaDTO::new).toList();
+    }
+
+    public List<AlunoTurmaDTO> buscarPorTurma(Long idTurma){
+        List<AlunoTurmaEntity> alunoTurmas = alunoTurmaRepository.findAlunoByTurma(idTurma);
+        return alunoTurmas.stream().map(AlunoTurmaDTO::new).collect(Collectors.toList());
     }
 
     public ResponseEntity<Map<String, String>> inserir(AlunoTurmaDTO alunoTurma){

@@ -9,9 +9,9 @@ import java.util.List;
 
 public interface AlunoRepository extends JpaRepository<AlunoEntity, Long> {
 
-    @Query(value = "SELECT * FROM aluno ORDER BY id", nativeQuery = true)
+    @Query(value = "SELECT a.* FROM aluno a ORDER BY a.id", nativeQuery = true)
     List<AlunoEntity> findAllOrderedById();
 
-    @Query(value = "SELECT * FROM aluno WHERE nome_completo LIKE %?% ORDER BY id", nativeQuery = true)
+    @Query(value = "SELECT a.* FROM aluno a WHERE a.nome_completo LIKE %?% ORDER BY a.id", nativeQuery = true)
     List<AlunoEntity> findAlunoByName(String nomeCompleto);
 }

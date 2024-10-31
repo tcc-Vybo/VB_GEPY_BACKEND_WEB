@@ -9,6 +9,6 @@ import java.util.List;
 
 public interface NewsRepository extends JpaRepository<NewsEntity, Long> {
 
-    @Query(value = "SELECT * FROM news ORDER BY id", nativeQuery = true)
+    @Query(value = "SELECT n.* FROM news n ORDER BY n.id", nativeQuery = true)
     List<NewsEntity> findAllOrderedById();
 }

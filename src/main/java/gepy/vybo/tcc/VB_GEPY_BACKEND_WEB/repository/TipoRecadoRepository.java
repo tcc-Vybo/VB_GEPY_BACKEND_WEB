@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface TipoRecadoRepository extends JpaRepository<TipoRecadoEntity, Long> {
 
-    @Query(value = "SELECT * FROM tipo_recado ORDER BY id", nativeQuery = true)
+    @Query(value = "SELECT tp.* FROM tipo_recado tp ORDER BY tp.id", nativeQuery = true)
     List<TipoRecadoEntity> findAllOrderedById();
 }

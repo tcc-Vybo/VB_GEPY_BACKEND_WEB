@@ -23,14 +23,7 @@ public class TurmaEntity {
     @Column(nullable = false)
     private String nome;
 
-    @ManyToOne
-    @JoinColumn(name = "id_professor", nullable = false)
-    private FuncionarioEntity professor;
-
     public TurmaEntity(TurmaDTO turma) {
         BeanUtils.copyProperties(turma, this);
-        if(turma != null && turma.getProfessor() != null) {
-            this.professor = new FuncionarioEntity(turma.getProfessor());
-        }
     }
 }

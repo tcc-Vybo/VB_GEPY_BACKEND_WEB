@@ -22,6 +22,12 @@ public class DisciplinaController {
         return disciplinaService.listarTodos();
     }
 
+    @GetMapping("/buscar/{nome}")
+    public ResponseEntity<List<DisciplinaDTO>> buscarPorNome(@PathVariable String nome){
+        List<DisciplinaDTO> disciplinas = disciplinaService.buscarPorNome(nome);
+        return ResponseEntity.ok(disciplinas);
+    }
+
     @PostMapping
     public ResponseEntity<Map<String, String>> inserir(@RequestBody DisciplinaDTO disciplina){
        return disciplinaService.inserir(disciplina);

@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface BoletimRepository extends JpaRepository<BoletimEntity, Long> {
 
-    @Query(value = "SELECT b* FROM boletim b ORDER BY b.id", nativeQuery = true)
+    @Query(value = "SELECT b.* FROM boletim b ORDER BY b.id", nativeQuery = true)
     List<BoletimEntity> findAllOrderedById();
 
     @Query(value = "SELECT b.* FROM boletim b WHERE b.id_disciplina = ?", nativeQuery = true)

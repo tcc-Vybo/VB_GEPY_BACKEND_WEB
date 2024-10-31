@@ -9,8 +9,8 @@ import java.util.List;
 
 public interface TurmaRepository extends JpaRepository<TurmaEntity, Long> {
 
-    @Query(value = "SELECT * FROM turma ORDER BY id", nativeQuery = true)
+    @Query(value = "SELECT t.* FROM turma t ORDER BY t.id", nativeQuery = true)
     List<TurmaEntity> findAllOrderedById();
-    @Query(value = "SELECT * FROM turma WHERE nome LIKE %?%", nativeQuery = true)
+    @Query(value = "SELECT t.* FROM turma t WHERE t.nome LIKE %?%", nativeQuery = true)
     List<TurmaEntity> findTurmaByName(String nome);
 }

@@ -13,13 +13,9 @@ public class TurmaDTO {
 
     private Long id;
     private String nome;
-    private FuncionarioDTO professor;
 
     public TurmaDTO(TurmaEntity turma) {
         BeanUtils.copyProperties(turma, this);
-        if(turma != null && turma.getProfessor() != null) {
-            this.professor = new FuncionarioDTO(turma.getProfessor());
-        }
     }
 
 }

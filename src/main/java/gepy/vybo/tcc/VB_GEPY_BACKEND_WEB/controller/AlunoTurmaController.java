@@ -22,6 +22,12 @@ public class AlunoTurmaController {
         return alunoTurmaService.listarTodos();
     }
 
+    @GetMapping("/buscar/{turma}")
+    public ResponseEntity<List<AlunoTurmaDTO>> buscarPorTurma(@PathVariable("turma") Long idTurma){
+        List<AlunoTurmaDTO> alunoTurmas = alunoTurmaService.buscarPorTurma(idTurma);
+        return ResponseEntity.ok(alunoTurmas);
+    }
+
     @PostMapping
     public ResponseEntity<Map<String, String>> inserir(@RequestBody AlunoTurmaDTO alunoTurma){
         return alunoTurmaService.inserir(alunoTurma);

@@ -8,10 +8,10 @@ import java.util.List;
 
 public interface FuncionarioRepository extends JpaRepository<FuncionarioEntity, Long> {
 
-    @Query(value = "SELECT * FROM funcionario ORDER BY id", nativeQuery = true)
+    @Query(value = "SELECT f.* FROM funcionario f ORDER BY f.id", nativeQuery = true)
     List<FuncionarioEntity> findAllOrderedById();
-    @Query(value = "SELECT * FROM funcionario WHERE nome_completo LIKE %?% ORDER BY id", nativeQuery = true)
+    @Query(value = "SELECT f.* FROM funcionario f WHERE f.nome_completo LIKE %?% ORDER BY f.id", nativeQuery = true)
     List<FuncionarioEntity> findFuncionarioByName(String nomeCompleto);
-    @Query(value = "SELECT * FROM funcionario WHERE cpf = ? and email = ?", nativeQuery = true)
+    @Query(value = "SELECT f.* FROM funcionario f WHERE f.cpf = ? and f.email = ?", nativeQuery = true)
     FuncionarioEntity findByCpfAndEmail(String cpf, String email);
 }

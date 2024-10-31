@@ -23,14 +23,15 @@ public class TurmaEntity {
     @Column(nullable = false)
     private String nome;
 
-    @ManyToOne
-    @JoinColumn(name = "id_professor", nullable = false)
-    private FuncionarioEntity professor;
+    @PrePersist
+    @PreUpdate
+    public void prePersistAndUpdate(){
+        if (this.nome != null){
+            this.nome = this.nome.toUpperCase();
+        }
+    }
 
     public TurmaEntity(TurmaDTO turma) {
         BeanUtils.copyProperties(turma, this);
-        if(turma != null && turma.getProfessor() != null) {
-            this.professor = new FuncionarioEntity(turma.getProfessor());
-        }
     }
 }

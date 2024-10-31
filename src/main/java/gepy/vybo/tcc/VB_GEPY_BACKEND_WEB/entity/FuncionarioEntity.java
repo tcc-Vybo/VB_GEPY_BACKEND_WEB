@@ -80,6 +80,14 @@ public class FuncionarioEntity {
     @Column(nullable = false)
     private String orgaoExpedidor;
 
+    @PrePersist
+    @PreUpdate
+    public void prePersistAndUpdate(){
+        if (this.nomeCompleto != null){
+            this.nomeCompleto = this.nomeCompleto.toUpperCase();
+        }
+    }
+
     public FuncionarioEntity(FuncionarioDTO funcionario) {
         BeanUtils.copyProperties(funcionario, this);
     }

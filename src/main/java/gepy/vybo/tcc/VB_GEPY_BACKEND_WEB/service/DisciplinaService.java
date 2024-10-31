@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class DisciplinaService {
@@ -21,6 +22,11 @@ public class DisciplinaService {
     public List<DisciplinaDTO> listarTodos(){
         List<DisciplinaEntity> disciplinas = disciplinaRepository.findAllOrderedById();
         return disciplinas.stream().map(DisciplinaDTO::new).toList();
+    }
+
+    public List<DisciplinaDTO> buscarPorNome(String nome){
+        List<DisciplinaEntity> disciplinas = disciplinaRepository.findDisciplinaByNome(nome);
+        return disciplinas.stream().map(DisciplinaDTO::new).collect(Collectors.toList());
     }
 
     public ResponseEntity<Map<String, String>> inserir(DisciplinaDTO disciplina){

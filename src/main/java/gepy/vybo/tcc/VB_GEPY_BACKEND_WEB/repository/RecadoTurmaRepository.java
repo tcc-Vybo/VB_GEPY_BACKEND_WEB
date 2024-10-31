@@ -10,9 +10,9 @@ import java.util.List;
 
 public interface RecadoTurmaRepository extends JpaRepository<RecadoTurmaEntity, Long> {
 
-    @Query(value = "SELECT * FROM recado_turma ORDER BY id", nativeQuery = true)
+    @Query(value = "SELECT rt.* FROM recado_turma rt ORDER BY rt.id", nativeQuery = true)
     List<RecadoTurmaEntity> findAllOrderedById();
 
-    @Query(value = "SELECT * FROM recado_turma WHERE id_tiporecado = ?", nativeQuery = true)
+    @Query(value = "SELECT rt.* FROM recado_turma rt WHERE rt.id_tiporecado = ?", nativeQuery = true)
     List<RecadoTurmaEntity> findAllByTipoRecado(Long idTipoRecado);
 }

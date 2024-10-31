@@ -8,10 +8,10 @@ import java.util.List;
 
 public interface RecadoAlunoRepository extends JpaRepository<RecadoAlunoEntity, Long> {
 
-    @Query(value = "SELECT * FROM recado_aluno ORDER BY id", nativeQuery = true)
+    @Query(value = "SELECT ra.* FROM recado_aluno ra ORDER BY ra.id", nativeQuery = true)
     List<RecadoAlunoEntity> findAllOrderedById();
 
-    @Query(value = "SELECT * FROM recado_aluno WHERE id_tiporecado = ?", nativeQuery = true)
+    @Query(value = "SELECT ra.* FROM recado_aluno ra WHERE ra.id_tiporecado = ?", nativeQuery = true)
     List<RecadoAlunoEntity> findAllByTipoRecado(Long idTipoRecado);
 
 }

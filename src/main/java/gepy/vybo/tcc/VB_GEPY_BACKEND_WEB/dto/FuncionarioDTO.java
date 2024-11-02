@@ -16,7 +16,11 @@ public class FuncionarioDTO {
     // Dados Pessoais
     private String nomeCompleto;
     private String dataNascimento;
+    private String cidadeNascimento;
+    private String ufNascimento;
+    private String nacionalidade;
     private String genero;
+    private String corRaca;
     private String telefone;
     private String email;
 

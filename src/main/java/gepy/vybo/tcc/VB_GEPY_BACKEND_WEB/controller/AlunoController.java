@@ -2,6 +2,7 @@ package gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.controller;
 
 import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.dto.AlunoDTO;
 import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.service.AlunoService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,12 +30,12 @@ public class AlunoController {
     }
 
     @PostMapping
-    public ResponseEntity<Map<String, String>> inserir(@RequestBody AlunoDTO aluno){
+    public ResponseEntity<Map<String, String>> inserir(@Valid @RequestBody AlunoDTO aluno){
         return alunoService.inserir(aluno);
     }
 
     @PutMapping
-    public ResponseEntity<Map<String, String>> alterar (@RequestBody AlunoDTO aluno){
+    public ResponseEntity<Map<String, String>> alterar (@Valid @RequestBody AlunoDTO aluno){
         return alunoService.alterar(aluno);
     }
 

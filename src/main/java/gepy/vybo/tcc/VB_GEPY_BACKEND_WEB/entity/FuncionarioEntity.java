@@ -28,7 +28,19 @@ public class FuncionarioEntity {
     private String dataNascimento;
 
     @Column(nullable = false)
+    private String cidadeNascimento;
+
+    @Column(nullable = false)
+    private String ufNascimento;
+
+    @Column(nullable = false)
+    private String nacionalidade;
+
+    @Column(nullable = false)
     private String genero;
+
+    @Column(nullable = false)
+    private String corRaca;
 
     @Column(nullable = false)
     private String telefone;

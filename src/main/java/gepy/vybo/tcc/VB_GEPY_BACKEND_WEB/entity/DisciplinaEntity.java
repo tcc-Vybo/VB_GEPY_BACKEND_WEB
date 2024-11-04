@@ -21,11 +21,9 @@ public class DisciplinaEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Pattern(regexp = "[^\"'<>*$]", message = "Caracteres especiais não são permitidos.")
     @Column(nullable = false)
     private String nome;
 
-    @Pattern(regexp = "[^\"'<>*$]", message = "Caracteres especiais não são permitidos.")
     @Column(nullable = false)
     private String descricao;
 

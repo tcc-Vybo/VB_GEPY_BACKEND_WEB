@@ -2,6 +2,7 @@ package gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.entity;
 
 import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.dto.DisciplinaDTO;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Pattern;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,9 +21,11 @@ public class DisciplinaEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Pattern(regexp = "[^\"'<>*$]", message = "Caracteres especiais não são permitidos.")
     @Column(nullable = false)
     private String nome;
 
+    @Pattern(regexp = "[^\"'<>*$]", message = "Caracteres especiais não são permitidos.")
     @Column(nullable = false)
     private String descricao;
 

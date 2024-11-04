@@ -21,7 +21,6 @@ public class TurmaEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Pattern(regexp = "[^\"'<>*$]", message = "Caracteres especiais não são permitidos.")
     @Column(nullable = false)
     private String nome;
 

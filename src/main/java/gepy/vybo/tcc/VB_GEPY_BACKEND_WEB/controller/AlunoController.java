@@ -30,12 +30,12 @@ public class AlunoController {
     }
 
     @PostMapping
-    public ResponseEntity<Map<String, String>> inserir(@Valid @RequestBody AlunoDTO aluno){
+    public ResponseEntity<Map<String, String>> inserir(@RequestBody AlunoDTO aluno){
         return alunoService.inserir(aluno);
     }
 
     @PutMapping
-    public ResponseEntity<Map<String, String>> alterar (@Valid @RequestBody AlunoDTO aluno){
+    public ResponseEntity<Map<String, String>> alterar (@RequestBody AlunoDTO aluno){
         return alunoService.alterar(aluno);
     }
 

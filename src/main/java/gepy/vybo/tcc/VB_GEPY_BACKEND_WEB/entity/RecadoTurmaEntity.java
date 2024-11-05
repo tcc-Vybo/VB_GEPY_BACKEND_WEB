@@ -2,6 +2,7 @@ package gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.entity;
 
 import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.dto.RecadoTurmaDTO;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,29 +21,37 @@ public class RecadoTurmaEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
     @Column(nullable = false)
     private String titulo;
 
+    @NotBlank
     @Column(nullable = false)
     private String descricao;
 
+    @NotBlank
     @Column(nullable = false)
     private String data;
 
+    @NotBlank
     @Column(nullable = false)
     private String hora;
 
+    @NotBlank
     @ManyToOne
     @JoinColumn(name = "id_funcionario", nullable = false)
     private FuncionarioEntity remetente;
 
+    @NotBlank
     @ManyToOne
     @JoinColumn(name = "id_turma", nullable = false)
     private TurmaEntity destinatario;
 
+    @NotBlank
     @Column(nullable = false)
     private String status;
 
+    @NotBlank
     @ManyToOne
     @JoinColumn(name = "id_tiporecado", nullable = false)
     private TipoRecadoEntity tipoRecado;

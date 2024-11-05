@@ -2,6 +2,7 @@ package gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.entity;
 
 import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.dto.NewsDTO;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,12 +21,15 @@ public class NewsEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
     @Column(nullable = false)
     private String titulo;
 
+    @NotBlank
     @Column(nullable = false)
     private String texto;
 
+    @NotBlank
     @Column(nullable = false)
     private String imagemUrl;
 

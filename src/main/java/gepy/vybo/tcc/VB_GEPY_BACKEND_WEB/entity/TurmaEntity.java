@@ -2,6 +2,7 @@ package gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.entity;
 
 import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.dto.TurmaDTO;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -21,6 +22,7 @@ public class TurmaEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
     @Column(nullable = false)
     private String nome;
 

@@ -2,6 +2,7 @@ package gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.entity;
 
 import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.dto.ProfessorDisciplinaDTO;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,10 +21,12 @@ public class ProfessorDisciplinaEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
     @ManyToOne
     @JoinColumn(name = "id_professor", nullable = false)
     private FuncionarioEntity professor;
 
+    @NotBlank
     @ManyToOne
     @JoinColumn(name = "id_disciplina", nullable = false)
     private DisciplinaEntity disciplina;

@@ -2,6 +2,7 @@ package gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.entity;
 
 import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.dto.RecadoAlunoDTO;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,26 +21,33 @@ public class RecadoAlunoEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
     @ManyToOne
     @JoinColumn(name = "id_funcionario", nullable = false)
     private FuncionarioEntity remetente;
 
+    @NotBlank
     @ManyToOne
     @JoinColumn(name = "id_aluno", nullable = false)
     private AlunoEntity destinatario;
 
+    @NotBlank
     @Column(nullable = false)
     private String texto;
 
+    @NotBlank
     @Column(nullable = false)
     private String dataAtual;
 
+    @NotBlank
     @Column(nullable = false)
     private String horarioAtual;
 
+    @NotBlank
     @Column(nullable = false)
     private String status;
 
+    @NotBlank
     @ManyToOne
     @JoinColumn(name = "id_tiporecado", nullable = false)
     private TipoRecadoEntity tipoRecado;

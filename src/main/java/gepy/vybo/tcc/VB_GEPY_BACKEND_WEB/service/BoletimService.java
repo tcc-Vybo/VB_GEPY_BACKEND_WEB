@@ -29,6 +29,11 @@ public class BoletimService {
         return notas.stream().map(BoletimDTO::new).collect(Collectors.toList());
     }
 
+    public List<BoletimDTO> buscarPorAluno(Long idAluno){
+        List<BoletimEntity> notas = boletimRepository.findAllByAluno(idAluno);
+        return notas.stream().map(BoletimDTO::new).collect(Collectors.toList());
+    }
+
     public ResponseEntity<Map<String, String>> inserir(BoletimDTO boletim){
         BoletimEntity boletimEntity = new BoletimEntity(boletim);
         Map<String, String> response = new HashMap<>();

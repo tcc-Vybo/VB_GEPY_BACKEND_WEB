@@ -1,5 +1,6 @@
 package gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.controller;
 
+import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.dto.RecadoAlunoDTO;
 import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.dto.RecadoTurmaDTO;
 import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.service.RecadoTurmaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,30 @@ public class RecadoTurmaController {
     @GetMapping("/buscar/{tipoRecado}")
     public ResponseEntity<List<RecadoTurmaDTO>> buscarPorTipoRecado(@PathVariable("tipoRecado") Long idTipoRecado){
         List<RecadoTurmaDTO> recados = recadoTurmaService.buscarPorTipoRecado(idTipoRecado);
+        return ResponseEntity.ok(recados);
+    }
+
+    @GetMapping("/buscar/{remetente}")
+    public ResponseEntity<List<RecadoTurmaDTO>> buscarPorRemetente(@PathVariable("remetente") Long idRemetente){
+        List<RecadoTurmaDTO> recados = recadoTurmaService.buscarPorRemetente(idRemetente);
+        return ResponseEntity.ok(recados);
+    }
+
+    @GetMapping("/buscar/{destinatario}")
+    public ResponseEntity<List<RecadoTurmaDTO>> buscarPorDestinatario(@PathVariable("destinatario") Long idDestinatario){
+        List<RecadoTurmaDTO> recados = recadoTurmaService.buscarPorDestinatario(idDestinatario);
+        return ResponseEntity.ok(recados);
+    }
+
+    @GetMapping("/buscar/{status}")
+    public ResponseEntity<List<RecadoTurmaDTO>> buscarPorStatus(@PathVariable String status){
+        List<RecadoTurmaDTO> recados = recadoTurmaService.buscarPorStatus(status);
+        return ResponseEntity.ok(recados);
+    }
+
+    @GetMapping("/buscar/{data}")
+    public ResponseEntity<List<RecadoTurmaDTO>> buscarPorData(@PathVariable String data){
+        List<RecadoTurmaDTO> recados = recadoTurmaService.buscarPorData(data);
         return ResponseEntity.ok(recados);
     }
 

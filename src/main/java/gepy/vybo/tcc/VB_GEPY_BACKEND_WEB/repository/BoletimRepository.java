@@ -13,4 +13,7 @@ public interface BoletimRepository extends JpaRepository<BoletimEntity, Long> {
 
     @Query(value = "SELECT b.* FROM boletim b WHERE b.id_disciplina = ?", nativeQuery = true)
     List<BoletimEntity> findAllByDisciplina(Long idDisciplina);
+
+    @Query(value = "SELECT b.* FROM boletim b WHERE b.id_aluno = ?", nativeQuery = true)
+    List<BoletimEntity> findAllByAluno(Long idAluno);
 }

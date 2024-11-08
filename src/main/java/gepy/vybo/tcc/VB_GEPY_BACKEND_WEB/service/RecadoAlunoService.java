@@ -29,6 +29,26 @@ public class RecadoAlunoService {
         return recadoAlunoPorTipo.stream().map(RecadoAlunoDTO::new).collect(Collectors.toList());
     }
 
+    public List<RecadoAlunoDTO> buscarPorDestinatario(Long idDestinatario){
+        List<RecadoAlunoEntity> recadoAlunoPorDestinatario = recadoAlunoRepository.findAllByDestinatario(idDestinatario);
+        return recadoAlunoPorDestinatario.stream().map(RecadoAlunoDTO::new).collect(Collectors.toList());
+    }
+
+    public List<RecadoAlunoDTO> buscarPorRemetente(Long idRemetente){
+        List<RecadoAlunoEntity> recadoAlunoPorRemetente = recadoAlunoRepository.findAllByRementente(idRemetente);
+        return recadoAlunoPorRemetente.stream().map(RecadoAlunoDTO::new).collect(Collectors.toList());
+    }
+
+    public List<RecadoAlunoDTO> buscarPorStatus(String status){
+        List<RecadoAlunoEntity> recadoAlunoPorStatus = recadoAlunoRepository.findAllByStatus(status);
+        return recadoAlunoPorStatus.stream().map(RecadoAlunoDTO::new).collect(Collectors.toList());
+    }
+
+    public List<RecadoAlunoDTO> buscarPorData(String data){
+        List<RecadoAlunoEntity> recadoAlunoPorData = recadoAlunoRepository.findAllByData(data);
+        return recadoAlunoPorData.stream().map(RecadoAlunoDTO::new).collect(Collectors.toList());
+    }
+
     public ResponseEntity<Map<String, String>> inserir(RecadoAlunoDTO recadoAluno){
         RecadoAlunoEntity recadoAlunoEntity = new RecadoAlunoEntity(recadoAluno);
         Map<String, String> response = new HashMap<>();

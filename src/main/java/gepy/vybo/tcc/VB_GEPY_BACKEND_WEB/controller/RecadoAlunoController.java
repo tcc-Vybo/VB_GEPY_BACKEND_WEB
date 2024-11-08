@@ -28,6 +28,30 @@ public class RecadoAlunoController {
         return ResponseEntity.ok(recados);
     }
 
+    @GetMapping("/buscar/{remetente}")
+    public ResponseEntity<List<RecadoAlunoDTO>> buscarPorRemetente(@PathVariable("remetente") Long idRemetente){
+        List<RecadoAlunoDTO> recados = recadoAlunoService.buscarPorRemetente(idRemetente);
+        return ResponseEntity.ok(recados);
+    }
+
+    @GetMapping("/buscar/{destinatario}")
+    public ResponseEntity<List<RecadoAlunoDTO>> buscarPorDestinatario(@PathVariable("destinatario") Long idDestinatario){
+        List<RecadoAlunoDTO> recados = recadoAlunoService.buscarPorDestinatario(idDestinatario);
+        return ResponseEntity.ok(recados);
+    }
+
+    @GetMapping("/buscar/{status}")
+    public ResponseEntity<List<RecadoAlunoDTO>> buscarPorStatus(@PathVariable String status){
+        List<RecadoAlunoDTO> recados = recadoAlunoService.buscarPorStatus(status);
+        return ResponseEntity.ok(recados);
+    }
+
+    @GetMapping("/buscar/{data}")
+    public ResponseEntity<List<RecadoAlunoDTO>> buscarPorData(@PathVariable String data){
+        List<RecadoAlunoDTO> recados = recadoAlunoService.buscarPorData(data);
+        return ResponseEntity.ok(recados);
+    }
+
     @PostMapping
     public ResponseEntity<Map<String, String>> inserir(@RequestBody RecadoAlunoDTO recadoAluno){
        return recadoAlunoService.inserir(recadoAluno);

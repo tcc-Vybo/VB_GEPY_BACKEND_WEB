@@ -13,6 +13,7 @@ public class NewsDTO {
 
     private Long id;
     private String titulo;
+    private String subtitulo;
     private String texto;
     private String imagemUrl;
 

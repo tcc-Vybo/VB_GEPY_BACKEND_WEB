@@ -2,6 +2,7 @@ package gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.entity;
 
 import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.dto.FuncionarioDTO;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -22,75 +23,95 @@ public class FuncionarioEntity {
     private Long id;
 
     // Dados Pessoais
+    @NotBlank
     @Column(nullable = false)
     private String nomeCompleto;
 
+    @NotBlank
     @Column(nullable = false)
     private String dataNascimento;
 
+    @NotBlank
     @Column(nullable = false)
     private String cidadeNascimento;
 
+    @NotBlank
     @Column(nullable = false)
     private String ufNascimento;
 
+    @NotBlank
     @Column(nullable = false)
     private String nacionalidade;
 
+    @NotBlank
     @Column(nullable = false)
     private String genero;
 
+    @NotBlank
     @Column(nullable = false)
     private String corRaca;
 
+    @NotBlank
     @Column(nullable = false)
     private String telefone;
 
+    @NotBlank
     @Column(nullable = false)
     private String email;
 
     // Dados Profissionais
+    @NotBlank
     @Column(nullable = false)
     private String cargo;
 
+    @NotBlank
     @Column(nullable = false)
     private String departamento;
 
+    @NotBlank
     @Column(nullable = false)
     private String dataAdmissao;
 
     // Endereço Residencial
+    @NotBlank
     @Column(nullable = false)
     private String cep;
 
+    @NotBlank
     @Column(nullable = false)
     private String endereco;
 
     @Column(nullable = false)
     private int numero;
 
-    @Column(nullable = false)
     private String complemento;
 
+    @NotBlank
     @Column(nullable = false)
     private String bairro;
 
+    @NotBlank
     @Column(nullable = false)
     private String cidade;
 
+    @NotBlank
     @Column(nullable = false)
     private String uf;
 
     // RG
+    @NotBlank
     @Column(nullable = false)
     private String numeroRegistro;
 
-    @Column(nullable = false)
+    @NotBlank
+    @Column(nullable = false, unique = true)
     private String cpf;
 
+    @NotBlank
     @Column(nullable = false)
     private String dataEmissao;
 
+    @NotBlank
     @Column(nullable = false)
     private String orgaoExpedidor;
 

@@ -15,6 +15,7 @@ public class RecadoTurmaDTO {
     private String descricao;
     private String data;
     private String hora;
+    private String dataDeEnvio;
     private FuncionarioDTO remetente;
     private TurmaDTO destinatario;
     private String status;

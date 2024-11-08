@@ -35,6 +35,10 @@ public class RecadoTurmaEntity {
 
     private String hora;
 
+    @NotBlank
+    @Column(nullable = false)
+    private String dataDeEnvio;
+
     @ManyToOne
     @JoinColumn(name = "id_funcionario", nullable = false)
     private FuncionarioEntity remetente;

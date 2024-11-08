@@ -21,12 +21,10 @@ public class TurmaDisciplinaEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
     @ManyToOne
     @JoinColumn(name = "id_turma", nullable = false)
     private TurmaEntity turma;
 
-    @NotBlank
     @ManyToOne
     @JoinColumn(name = "id_disciplina", nullable = false)
     private DisciplinaEntity disciplina;

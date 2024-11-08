@@ -81,7 +81,6 @@ public class FuncionarioEntity {
     @Column(nullable = false)
     private String endereco;
 
-    @NotBlank
     @Column(nullable = false)
     private int numero;
 

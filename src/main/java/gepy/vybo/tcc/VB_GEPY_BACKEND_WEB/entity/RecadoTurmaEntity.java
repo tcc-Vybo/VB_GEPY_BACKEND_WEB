@@ -33,16 +33,12 @@ public class RecadoTurmaEntity {
     @Column(nullable = false)
     private String data;
 
-    @NotBlank
-    @Column(nullable = false)
     private String hora;
 
-    @NotBlank
     @ManyToOne
     @JoinColumn(name = "id_funcionario", nullable = false)
     private FuncionarioEntity remetente;
 
-    @NotBlank
     @ManyToOne
     @JoinColumn(name = "id_turma", nullable = false)
     private TurmaEntity destinatario;
@@ -51,10 +47,17 @@ public class RecadoTurmaEntity {
     @Column(nullable = false)
     private String status;
 
-    @NotBlank
     @ManyToOne
     @JoinColumn(name = "id_tiporecado", nullable = false)
     private TipoRecadoEntity tipoRecado;
+
+    @PrePersist
+    @PreUpdate
+    public void prePersistAndUpdate(){
+        if (this.status != null){
+            this.status = this.status.toUpperCase();
+        }
+    }
 
     public RecadoTurmaEntity(RecadoTurmaDTO recadoTurma){
         BeanUtils.copyProperties(recadoTurma, this);

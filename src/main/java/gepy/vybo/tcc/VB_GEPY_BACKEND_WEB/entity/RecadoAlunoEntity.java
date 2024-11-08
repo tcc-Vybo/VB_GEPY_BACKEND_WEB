@@ -21,12 +21,10 @@ public class RecadoAlunoEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
     @ManyToOne
     @JoinColumn(name = "id_funcionario", nullable = false)
     private FuncionarioEntity remetente;
 
-    @NotBlank
     @ManyToOne
     @JoinColumn(name = "id_aluno", nullable = false)
     private AlunoEntity destinatario;
@@ -37,20 +35,25 @@ public class RecadoAlunoEntity {
 
     @NotBlank
     @Column(nullable = false)
-    private String dataAtual;
+    private String data;
 
-    @NotBlank
-    @Column(nullable = false)
-    private String horarioAtual;
+    private String hora;
 
     @NotBlank
     @Column(nullable = false)
     private String status;
 
-    @NotBlank
     @ManyToOne
     @JoinColumn(name = "id_tiporecado", nullable = false)
     private TipoRecadoEntity tipoRecado;
+
+    @PrePersist
+    @PreUpdate
+    public void prePersistAndUpdate(){
+        if (this.status != null){
+            this.status = this.status.toUpperCase();
+        }
+    }
 
     public RecadoAlunoEntity(RecadoAlunoDTO recadoAluno){
         BeanUtils.copyProperties(recadoAluno, this);

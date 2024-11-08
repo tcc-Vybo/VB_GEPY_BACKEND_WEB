@@ -14,16 +14,16 @@ public interface RecadoAlunoRepository extends JpaRepository<RecadoAlunoEntity, 
     @Query(value = "SELECT ra.* FROM recado_aluno ra WHERE ra.id_tiporecado = ?", nativeQuery = true)
     List<RecadoAlunoEntity> findAllByTipoRecado(Long idTipoRecado);
 
-    @Query(value = "SELECT rt.* FROM recado_aluno rt JOIN funcionario f ON rt.id_funcionario = f.id WHERE f.id = ?", nativeQuery = true)
+    @Query(value = "SELECT ra.* FROM recado_aluno ra JOIN funcionario f ON ra.id_funcionario = f.id WHERE f.id = ?", nativeQuery = true)
     List<RecadoAlunoEntity> findAllByDestinatario(Long idDestinatario);
 
-    @Query(value = "SELECT rt.* FROM recado_aluno rt JOIN aluno a ON rt.id_aluno = a.id WHERE a.id = ?", nativeQuery = true)
+    @Query(value = "SELECT ra.* FROM recado_aluno ra JOIN aluno a ON ra.id_aluno = a.id WHERE a.id = ?", nativeQuery = true)
     List<RecadoAlunoEntity> findAllByRementente(Long idRemetente);
 
-    @Query(value = "SELECT rt.* FROM recado_aluno rt WHERE rt.status LIKE %?% ORDER BY id", nativeQuery = true)
+    @Query(value = "SELECT ra.* FROM recado_aluno ra WHERE ra.status LIKE %?% ORDER BY id", nativeQuery = true)
     List<RecadoAlunoEntity> findAllByStatus(String status);
 
-    @Query(value = "SELECT rt.* FROM recado_aluno rt WHERE rt.data_atual LIKE %?% ORDER BY id", nativeQuery = true)
+    @Query(value = "SELECT ra.* FROM recado_aluno ra WHERE ra.data_atual LIKE %?% ORDER BY id", nativeQuery = true)
     List<RecadoAlunoEntity> findAllByData(String data);
 
 }

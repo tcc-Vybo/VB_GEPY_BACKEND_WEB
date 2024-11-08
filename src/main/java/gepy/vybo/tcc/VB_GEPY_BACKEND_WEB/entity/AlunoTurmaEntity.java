@@ -21,12 +21,10 @@ public class AlunoTurmaEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
     @ManyToOne
     @JoinColumn(name = "id_aluno", nullable = false)
     private AlunoEntity aluno;
 
-    @NotBlank
     @ManyToOne
     @JoinColumn(name = "id_turma", nullable = false)
     private TurmaEntity turma;

@@ -21,12 +21,10 @@ public class ProfessorDisciplinaEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
     @ManyToOne
     @JoinColumn(name = "id_professor", nullable = false)
     private FuncionarioEntity professor;
 
-    @NotBlank
     @ManyToOne
     @JoinColumn(name = "id_disciplina", nullable = false)
     private DisciplinaEntity disciplina;

@@ -27,6 +27,10 @@ public class NewsEntity {
 
     @NotBlank
     @Column(nullable = false)
+    private String subtitulo;
+
+    @NotBlank
+    @Column(nullable = false)
     private String texto;
 
     @NotBlank

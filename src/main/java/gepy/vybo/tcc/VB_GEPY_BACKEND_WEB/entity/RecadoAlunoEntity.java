@@ -41,6 +41,10 @@ public class RecadoAlunoEntity {
 
     @NotBlank
     @Column(nullable = false)
+    private String dataDeEnvio;
+
+    @NotBlank
+    @Column(nullable = false)
     private String status;
 
     @ManyToOne

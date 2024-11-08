@@ -14,8 +14,9 @@ public class RecadoAlunoDTO {
     private FuncionarioDTO remetente;
     private AlunoDTO destinatario;
     private String texto;
-    private String dataAtual;
-    private String horarioAtual;
+    private String data;
+    private String horario;
+    private String dataDeEnvio;
     private String status;
     private TipoRecadoDTO tipoRecado;
 

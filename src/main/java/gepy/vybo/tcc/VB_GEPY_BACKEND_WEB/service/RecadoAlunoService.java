@@ -49,6 +49,11 @@ public class RecadoAlunoService {
         return recadoAlunoPorData.stream().map(RecadoAlunoDTO::new).collect(Collectors.toList());
     }
 
+    public List<RecadoAlunoDTO> buscarPorDataDeEnvio(String dataDeEnvio){
+        List<RecadoAlunoEntity> recadoAlunoPorData = recadoAlunoRepository.findAllByDataDeEnvio(dataDeEnvio);
+        return recadoAlunoPorData.stream().map(RecadoAlunoDTO::new).collect(Collectors.toList());
+    }
+
     public ResponseEntity<Map<String, String>> inserir(RecadoAlunoDTO recadoAluno){
         RecadoAlunoEntity recadoAlunoEntity = new RecadoAlunoEntity(recadoAluno);
         Map<String, String> response = new HashMap<>();

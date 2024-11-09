@@ -52,7 +52,7 @@ public class RecadoAlunoController {
         return ResponseEntity.ok(recados);
     }
 
-    @GetMapping("/buscar/datadenevio/{dataDeEnvio}")
+    @GetMapping("/buscar/datadeenvio/{dataDeEnvio}")
     public ResponseEntity<List<RecadoAlunoDTO>> buscarPorDataDeEnvio(@PathVariable String dataDeEnvio){
         List<RecadoAlunoDTO> recados = recadoAlunoService.buscarPorDataDeEnvio(dataDeEnvio);
         return ResponseEntity.ok(recados);

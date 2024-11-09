@@ -22,31 +22,31 @@ public class RecadoAlunoController {
         return recadoAlunoService.listarTodos();
     }
 
-    @GetMapping("/buscar/{tipoRecado}")
+    @GetMapping("/buscar/tiporecado/{tipoRecado}")
     public ResponseEntity<List<RecadoAlunoDTO>> buscarPorTipoRecado(@PathVariable("tipoRecado") Long idTipoRecado){
         List<RecadoAlunoDTO> recados = recadoAlunoService.buscarPorTipoRecado(idTipoRecado);
         return ResponseEntity.ok(recados);
     }
 
-    @GetMapping("/buscar/{remetente}")
+    @GetMapping("/buscar/remetente/{remetente}")
     public ResponseEntity<List<RecadoAlunoDTO>> buscarPorRemetente(@PathVariable("remetente") Long idRemetente){
         List<RecadoAlunoDTO> recados = recadoAlunoService.buscarPorRemetente(idRemetente);
         return ResponseEntity.ok(recados);
     }
 
-    @GetMapping("/buscar/{destinatario}")
+    @GetMapping("/buscar/destinatario/{destinatario}")
     public ResponseEntity<List<RecadoAlunoDTO>> buscarPorDestinatario(@PathVariable("destinatario") Long idDestinatario){
         List<RecadoAlunoDTO> recados = recadoAlunoService.buscarPorDestinatario(idDestinatario);
         return ResponseEntity.ok(recados);
     }
 
-    @GetMapping("/buscar/{status}")
+    @GetMapping("/buscar/status/{status}")
     public ResponseEntity<List<RecadoAlunoDTO>> buscarPorStatus(@PathVariable String status){
         List<RecadoAlunoDTO> recados = recadoAlunoService.buscarPorStatus(status);
         return ResponseEntity.ok(recados);
     }
 
-    @GetMapping("/buscar/{data}")
+    @GetMapping("/buscar/data/{data}")
     public ResponseEntity<List<RecadoAlunoDTO>> buscarPorData(@PathVariable String data){
         List<RecadoAlunoDTO> recados = recadoAlunoService.buscarPorData(data);
         return ResponseEntity.ok(recados);

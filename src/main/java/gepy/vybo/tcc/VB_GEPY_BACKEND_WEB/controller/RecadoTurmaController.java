@@ -53,6 +53,12 @@ public class RecadoTurmaController {
         return ResponseEntity.ok(recados);
     }
 
+    @GetMapping("/buscar/datadenevio/{dataDeEnvio}")
+    public ResponseEntity<List<RecadoTurmaDTO>> buscarPorDataDeEnvio(@PathVariable String dataDeEnvio){
+        List<RecadoTurmaDTO> recados = recadoTurmaService.buscarPorDataDeEnvio(dataDeEnvio);
+        return ResponseEntity.ok(recados);
+    }
+
     @PostMapping
     public ResponseEntity<Map<String, String>> inserir(@RequestBody RecadoTurmaDTO recadoTurma){
         return recadoTurmaService.inserir(recadoTurma);

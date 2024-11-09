@@ -52,6 +52,12 @@ public class RecadoAlunoController {
         return ResponseEntity.ok(recados);
     }
 
+    @GetMapping("/buscar/datadenevio/{dataDeEnvio}")
+    public ResponseEntity<List<RecadoAlunoDTO>> buscarPorDataDeEnvio(@PathVariable String dataDeEnvio){
+        List<RecadoAlunoDTO> recados = recadoAlunoService.buscarPorDataDeEnvio(dataDeEnvio);
+        return ResponseEntity.ok(recados);
+    }
+
     @PostMapping
     public ResponseEntity<Map<String, String>> inserir(@RequestBody RecadoAlunoDTO recadoAluno){
        return recadoAlunoService.inserir(recadoAluno);

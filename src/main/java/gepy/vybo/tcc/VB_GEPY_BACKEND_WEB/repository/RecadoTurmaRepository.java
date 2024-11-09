@@ -14,10 +14,10 @@ public interface RecadoTurmaRepository extends JpaRepository<RecadoTurmaEntity, 
     @Query(value = "SELECT rt.* FROM recado_turma rt WHERE rt.id_tiporecado = ?", nativeQuery = true)
     List<RecadoTurmaEntity> findAllByTipoRecado(Long idTipoRecado);
 
-    @Query(value = "SELECT rt.* FROM recado_turma rt JOIN funcionario f ON rt.id_funcionario = f.id WHERE f.id = ?", nativeQuery = true)
+    @Query(value = "SELECT rt.* FROM recado_turma rt JOIN turma t ON rt.id_turma = t.id WHERE t.id = ?", nativeQuery = true)
     List<RecadoTurmaEntity> findAllByDestinatario(Long idDestinatario);
 
-    @Query(value = "SELECT rt.* FROM recado_turma rt JOIN turma t ON rt.id_turma = t.id WHERE t.id = ?", nativeQuery = true)
+    @Query(value = "SELECT rt.* FROM recado_turma rt JOIN funcionario f ON rt.id_funcionario = f.id WHERE f.id = ?", nativeQuery = true)
     List<RecadoTurmaEntity> findAllByRementente(Long idRemetente);
 
     @Query(value = "SELECT rt.* FROM recado_turma rt WHERE rt.status LIKE %?% ORDER BY id", nativeQuery = true)

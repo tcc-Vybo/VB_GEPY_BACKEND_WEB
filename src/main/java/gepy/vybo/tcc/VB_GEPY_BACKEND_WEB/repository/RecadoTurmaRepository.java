@@ -26,4 +26,7 @@ public interface RecadoTurmaRepository extends JpaRepository<RecadoTurmaEntity, 
     @Query(value = "SELECT rt.* FROM recado_turma rt WHERE rt.data LIKE %?% ORDER BY id", nativeQuery = true)
     List<RecadoTurmaEntity> findAllByData(String data);
 
+    @Query(value = "SELECT rt.* FROM recado_turma rt WHERE rt.data_de_envio LIKE %?% ORDER BY id", nativeQuery = true)
+    List<RecadoTurmaEntity> findAllByDataDeEnvio(String dataDeEnvio);
+
 }

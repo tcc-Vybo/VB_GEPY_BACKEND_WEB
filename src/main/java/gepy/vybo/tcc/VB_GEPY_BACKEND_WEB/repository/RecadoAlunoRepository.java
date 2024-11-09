@@ -23,7 +23,10 @@ public interface RecadoAlunoRepository extends JpaRepository<RecadoAlunoEntity, 
     @Query(value = "SELECT ra.* FROM recado_aluno ra WHERE ra.status LIKE %?% ORDER BY id", nativeQuery = true)
     List<RecadoAlunoEntity> findAllByStatus(String status);
 
-    @Query(value = "SELECT ra.* FROM recado_aluno ra WHERE ra.data_atual LIKE %?% ORDER BY id", nativeQuery = true)
+    @Query(value = "SELECT ra.* FROM recado_aluno ra WHERE ra.data LIKE %?% ORDER BY id", nativeQuery = true)
     List<RecadoAlunoEntity> findAllByData(String data);
+
+    @Query(value = "SELECT ra.* FROM recado_aluno ra WHERE ra.data_de_envio LIKE %?% ORDER BY id", nativeQuery = true)
+    List<RecadoAlunoEntity> findAllByDataDeEnvio(String dataDeEnvio);
 
 }

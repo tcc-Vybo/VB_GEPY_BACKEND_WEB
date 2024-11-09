@@ -49,6 +49,11 @@ public class RecadoTurmaService {
         return recadoTurmaPorData.stream().map(RecadoTurmaDTO::new).collect(Collectors.toList());
     }
 
+    public List<RecadoTurmaDTO> buscarPorDataDeEnvio(String dataDeEnvio){
+        List<RecadoTurmaEntity> recadoTurmaPorData = recadoTurmaRepository.findAllByDataDeEnvio(dataDeEnvio);
+        return recadoTurmaPorData.stream().map(RecadoTurmaDTO::new).collect(Collectors.toList());
+    }
+
     public ResponseEntity<Map<String, String>> inserir(RecadoTurmaDTO recadoTurma){
         RecadoTurmaEntity recadoTurmaEntity = new RecadoTurmaEntity(recadoTurma);
         Map<String, String> response = new HashMap<>();

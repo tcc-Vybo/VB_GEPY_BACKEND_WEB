@@ -23,31 +23,31 @@ public class RecadoTurmaController {
         return recadoTurmaService.listarTodos();
     }
 
-    @GetMapping("/buscar/{tipoRecado}")
+    @GetMapping("/buscar/tiporecado/{tipoRecado}")
     public ResponseEntity<List<RecadoTurmaDTO>> buscarPorTipoRecado(@PathVariable("tipoRecado") Long idTipoRecado){
         List<RecadoTurmaDTO> recados = recadoTurmaService.buscarPorTipoRecado(idTipoRecado);
         return ResponseEntity.ok(recados);
     }
 
-    @GetMapping("/buscar/{remetente}")
+    @GetMapping("/buscar/remetente/{remetente}")
     public ResponseEntity<List<RecadoTurmaDTO>> buscarPorRemetente(@PathVariable("remetente") Long idRemetente){
         List<RecadoTurmaDTO> recados = recadoTurmaService.buscarPorRemetente(idRemetente);
         return ResponseEntity.ok(recados);
     }
 
-    @GetMapping("/buscar/{destinatario}")
+    @GetMapping("/buscar/destinatario/{destinatario}")
     public ResponseEntity<List<RecadoTurmaDTO>> buscarPorDestinatario(@PathVariable("destinatario") Long idDestinatario){
         List<RecadoTurmaDTO> recados = recadoTurmaService.buscarPorDestinatario(idDestinatario);
         return ResponseEntity.ok(recados);
     }
 
-    @GetMapping("/buscar/{status}")
+    @GetMapping("/buscar/status/{status}")
     public ResponseEntity<List<RecadoTurmaDTO>> buscarPorStatus(@PathVariable String status){
         List<RecadoTurmaDTO> recados = recadoTurmaService.buscarPorStatus(status);
         return ResponseEntity.ok(recados);
     }
 
-    @GetMapping("/buscar/{data}")
+    @GetMapping("/buscar/data/{data}")
     public ResponseEntity<List<RecadoTurmaDTO>> buscarPorData(@PathVariable String data){
         List<RecadoTurmaDTO> recados = recadoTurmaService.buscarPorData(data);
         return ResponseEntity.ok(recados);

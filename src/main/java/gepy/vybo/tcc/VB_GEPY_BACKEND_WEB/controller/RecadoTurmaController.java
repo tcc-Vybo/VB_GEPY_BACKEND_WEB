@@ -53,7 +53,7 @@ public class RecadoTurmaController {
         return ResponseEntity.ok(recados);
     }
 
-    @GetMapping("/buscar/datadenevio/{dataDeEnvio}")
+    @GetMapping("/buscar/datadeenvio/{dataDeEnvio}")
     public ResponseEntity<List<RecadoTurmaDTO>> buscarPorDataDeEnvio(@PathVariable String dataDeEnvio){
         List<RecadoTurmaDTO> recados = recadoTurmaService.buscarPorDataDeEnvio(dataDeEnvio);
         return ResponseEntity.ok(recados);

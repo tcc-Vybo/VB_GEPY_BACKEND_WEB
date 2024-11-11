@@ -61,6 +61,12 @@ public class RecadoTurmaEntity {
         if (this.status != null){
             this.status = this.status.toUpperCase();
         }
+        if (this.data != null && !this.data.startsWith("'") && !this.data.endsWith("'")) {
+            this.data = "'" + this.data + "'";
+        }
+        if (this.dataDeEnvio != null && !this.dataDeEnvio.startsWith("'") && !this.dataDeEnvio.endsWith("'")) {
+            this.dataDeEnvio = "'" + this.dataDeEnvio + "'";
+        }
     }
 
     public RecadoTurmaEntity(RecadoTurmaDTO recadoTurma){

@@ -74,7 +74,7 @@ public class RecadoTurmaEntity {
         }
         // Formatação da data de envio
         if (this.dataDeEnvio != null) {
-            LocalDate localDateDeEnvio = LocalDate.parse(this.dataDeEnvio, inputFormatter);
+            LocalDate localDateDeEnvio = LocalDate.parse(this.dataDeEnvio);
             this.dataDeEnvio = localDateDeEnvio.format(outputFormatter);
         }
     }

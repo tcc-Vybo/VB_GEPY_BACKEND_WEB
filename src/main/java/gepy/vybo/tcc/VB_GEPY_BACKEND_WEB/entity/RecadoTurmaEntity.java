@@ -9,6 +9,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.beans.BeanUtils;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 @Entity
 @Table(name = "recado_turma")
 @Getter
@@ -61,11 +64,18 @@ public class RecadoTurmaEntity {
         if (this.status != null){
             this.status = this.status.toUpperCase();
         }
-        if (this.data != null && !this.data.startsWith("'") && !this.data.endsWith("'")) {
-            this.data = "'" + this.data + "'";
+
+        DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd"); // Formato de entrada
+        DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy"); // Formato desejado
+
+        if (this.data != null) {
+            LocalDate localDate = LocalDate.parse(this.data, inputFormatter);
+            this.data = localDate.format(outputFormatter);
         }
-        if (this.dataDeEnvio != null && !this.dataDeEnvio.startsWith("'") && !this.dataDeEnvio.endsWith("'")) {
-            this.dataDeEnvio = "'" + this.dataDeEnvio + "'";
+        // Formatação da data de envio
+        if (this.dataDeEnvio != null) {
+            LocalDate localDateDeEnvio = LocalDate.parse(this.dataDeEnvio, inputFormatter);
+            this.dataDeEnvio = localDateDeEnvio.format(outputFormatter);
         }
     }
 

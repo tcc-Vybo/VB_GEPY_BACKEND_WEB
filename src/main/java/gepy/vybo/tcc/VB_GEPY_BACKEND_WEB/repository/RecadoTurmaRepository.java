@@ -3,6 +3,7 @@ package gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.repository;
 import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.entity.RecadoTurmaEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -28,5 +29,19 @@ public interface RecadoTurmaRepository extends JpaRepository<RecadoTurmaEntity, 
 
     @Query(value = "SELECT rt.* FROM recado_turma rt WHERE rt.data_de_envio LIKE %?% ORDER BY id", nativeQuery = true)
     List<RecadoTurmaEntity> findAllByDataDeEnvio(String dataDeEnvio);
+
+    @Query(value = "SELECT * FROM recado_turma rt " +
+            "WHERE (:dataMarcada IS NULL OR rt.data ILIKE CONCAT('%', :dataMarcada, '%'))" +
+            "AND (:dataDeEnvio IS NULL OR rt.data_de_envio ILIKE CONCAT('%', :dataDeEnvio,'%'))" +
+            "AND (:remetente IS NULL OR rt.id_funcionario = :remetente)" +
+            "AND (:destinatario IS NULL OR rt.id_turma = :destinatario)" +
+            "AND (:tipoRecado IS NULL OR rt.id_tiporecado = :tipoRecado);",
+            nativeQuery = true)
+    List<RecadoTurmaEntity> buscarPorFiltrosSQL(
+            @Param("dataMarcada") String dataMarcada,
+            @Param("dataDeEnvio") String dataDeEnvio,
+            @Param("remetente") Long remetente,
+            @Param("destinatario") Long destinatario,
+            @Param("tipoRecado") Long tipoRecado);
 
 }

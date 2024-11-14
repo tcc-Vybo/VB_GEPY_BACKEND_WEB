@@ -1,6 +1,5 @@
 package gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.controller;
 
-import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.dto.RecadoAlunoDTO;
 import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.dto.RecadoTurmaDTO;
 import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.service.RecadoTurmaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,6 +55,18 @@ public class RecadoTurmaController {
     @GetMapping("/buscar/datadeenvio/{dataDeEnvio}")
     public ResponseEntity<List<RecadoTurmaDTO>> buscarPorDataDeEnvio(@PathVariable String dataDeEnvio){
         List<RecadoTurmaDTO> recados = recadoTurmaService.buscarPorDataDeEnvio(dataDeEnvio);
+        return ResponseEntity.ok(recados);
+    }
+
+    @GetMapping("/buscar")
+    public ResponseEntity<List<RecadoTurmaDTO>> buscarRecados(
+            @RequestParam(required = false) String dataMarcada,
+            @RequestParam(required = false) String dataDeEnvio,
+            @RequestParam(required = false) Long remetente,
+            @RequestParam(required = false) Long destinatario,
+            @RequestParam(required = false) Long tipoRecado) {
+
+            List<RecadoTurmaDTO> recados = recadoTurmaService.buscarPorFiltrosSQL(dataMarcada, dataDeEnvio, remetente, destinatario, tipoRecado);
         return ResponseEntity.ok(recados);
     }
 

@@ -42,7 +42,7 @@ public class FuncionarioService {
             response.put("message", "Funcionário cadastado com sucesso!!");
             return ResponseEntity.ok(response);
         }catch(Exception e){
-            response.put("error", "Erro ao cadastrar funcionário!!");
+            response.put("error", "Erro ao cadastrar funcionário!!" + e.getMessage());
             return ResponseEntity.ok(response);
         }
     }

@@ -3,6 +3,7 @@ package gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.entity;
 import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.dto.AlunoDTO;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -60,7 +61,7 @@ public class AlunoEntity {
     @Column(nullable = false)
     private String cep;
 
-    @NotBlank
+    @NotNull
     @Column(nullable = false)
     private String endereco;
 

@@ -41,7 +41,7 @@ public class AlunoService {
             response.put("message", "Aluno cadastrado com sucesso!!");
             return ResponseEntity.ok(response);
         }catch (Exception e){
-            response.put("error", "Erro ao cadastrar aluno!!");
+            response.put("error", "Erro ao cadastrar aluno!!" + e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }

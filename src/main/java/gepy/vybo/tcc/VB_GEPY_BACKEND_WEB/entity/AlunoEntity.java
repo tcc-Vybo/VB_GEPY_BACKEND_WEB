@@ -61,11 +61,11 @@ public class AlunoEntity {
     @Column(nullable = false)
     private String cep;
 
-    @NotNull
+    @NotBlank
     @Column(nullable = false)
     private String endereco;
 
-    @NotBlank
+    @NotNull
     @Column(nullable = false)
     private int numeroEndereco;
 

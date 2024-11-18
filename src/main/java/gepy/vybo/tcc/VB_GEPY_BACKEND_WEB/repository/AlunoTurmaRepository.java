@@ -11,6 +11,6 @@ public interface AlunoTurmaRepository extends JpaRepository<AlunoTurmaEntity, Lo
     @Query(value = "SELECT apt.* FROM aluno_turma apt ORDER BY apt.id", nativeQuery = true)
     List<AlunoTurmaEntity> findAllOrderedById();
 
-    @Query(value = "SELECT apt.* FROM aluno_turma apt JOIN aluno a ON apt.id_aluno = a.id JOIN turma t ON apt.id_turma = t.id WHERE t.id = ?", nativeQuery = true)
+    @Query(value = "SELECT apt.* FROM aluno_turma apt JOIN aluno a ON apt.id_aluno = a.id JOIN turma t ON apt.id_turma = t.id WHERE t.id = ? ORDER BY id", nativeQuery = true)
     List<AlunoTurmaEntity> findAlunoByTurma(Long idTurma);
 }

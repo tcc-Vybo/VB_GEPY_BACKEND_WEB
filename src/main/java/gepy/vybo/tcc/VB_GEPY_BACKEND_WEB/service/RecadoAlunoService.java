@@ -62,7 +62,7 @@ public class RecadoAlunoService {
             response.put("message", "Recado postado com sucesso!!");
             return ResponseEntity.ok(response);
         }catch(Exception e){
-            response.put("error", "Erro ao postar recado!!");
+            response.put("error", "Erro ao postar recado!!" + e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
@@ -75,7 +75,7 @@ public class RecadoAlunoService {
             response.put("message", "Recado alterado com sucesso!!");
             return ResponseEntity.ok(response);
         } catch (Exception e) {
-            response.put("error", "Erro ao alterar recado!!");
+            response.put("error", "Erro ao alterar recado!!" + e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
@@ -88,7 +88,7 @@ public class RecadoAlunoService {
             response.put("message", "Recado excluido com sucesso!!");
             return ResponseEntity.ok(response);
         }catch(Exception e){
-            response.put("error", "Erro ao excluir recado!!");
+            response.put("error", "Erro ao excluir recado!!" + e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }

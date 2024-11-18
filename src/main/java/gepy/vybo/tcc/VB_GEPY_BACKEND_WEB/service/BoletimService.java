@@ -42,7 +42,7 @@ public class BoletimService {
             response.put("message", "Boletim registrado com sucesso!!");
             return ResponseEntity.ok(response);
         }catch (Exception e){
-            response.put("error", "Erro ao registrar boletim!!");
+            response.put("error", "Erro ao registrar boletim!!" + e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
@@ -55,7 +55,7 @@ public class BoletimService {
             response.put("message", "Boletim alterado com sucesso!!");
             return ResponseEntity.ok(response);
         }catch (Exception e){
-            response.put("error", "Erro ao alterar boletim!!");
+            response.put("error", "Erro ao alterar boletim!!" + e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
@@ -68,7 +68,7 @@ public class BoletimService {
             response.put("message", "Boletim excluido com sucesso!!");
             return ResponseEntity.ok(response);
         }catch (Exception e){
-            response.put("error", "Erro ao excluir boletim!!");
+            response.put("error", "Erro ao excluir boletim!!" + e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }

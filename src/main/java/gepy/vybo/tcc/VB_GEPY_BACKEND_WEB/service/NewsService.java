@@ -31,7 +31,7 @@ public class NewsService {
             response.put("message", "Notícia postada com sucesso!!");
             return ResponseEntity.ok(response);
         }catch (Exception e){
-            response.put("error", "Erro ao postar notícia!!");
+            response.put("error", "Erro ao postar notícia!!" + e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
@@ -44,7 +44,7 @@ public class NewsService {
             response.put("message", "Notícia editada com sucesso!!");
             return ResponseEntity.ok(response);
         }catch (Exception e){
-            response.put("error", "Erro ao editar notícia!!");
+            response.put("error", "Erro ao editar notícia!!" + e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
@@ -57,7 +57,7 @@ public class NewsService {
             response.put("message", "Notícia deletada com sucesso!!");
             return ResponseEntity.ok(response);
         }catch (Exception e){
-            response.put("error", "Erro ao deletar notícia!!");
+            response.put("error", "Erro ao deletar notícia!!" + e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }

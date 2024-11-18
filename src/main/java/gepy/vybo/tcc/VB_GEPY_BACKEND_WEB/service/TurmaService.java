@@ -37,7 +37,7 @@ public class TurmaService {
             response.put("message", "Turma cadastrada com sucesso!!");
             return ResponseEntity.ok(response);
         }catch (Exception e){
-            response.put("error", "Erro ao cadastrar turma!!");
+            response.put("error", "Erro ao cadastrar turma!!" + e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
@@ -50,7 +50,7 @@ public class TurmaService {
             response.put("message", "Turma alterada com sucesso!!");
             return ResponseEntity.ok(response);
         }catch (Exception e){
-            response.put("error", "Erro ao alterar turma!!");
+            response.put("error", "Erro ao alterar turma!!" + e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
@@ -63,7 +63,7 @@ public class TurmaService {
             response.put("message", "Turma removida com sucesso!!");
             return ResponseEntity.ok(response);
         }catch (Exception e){
-            response.put("error", "Erro ao remover turma!!");
+            response.put("error", "Erro ao remover turma!!" + e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }

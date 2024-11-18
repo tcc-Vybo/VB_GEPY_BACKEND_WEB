@@ -37,7 +37,7 @@ public class AlunoTurmaService {
             response.put("message", "Aluno associado a turma com sucesso!");
             return ResponseEntity.ok(response);
         }catch(Exception e){
-            response.put("error", "Erro ao associar aluno!");
+            response.put("error", "Erro ao associar aluno!" + e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
@@ -50,7 +50,7 @@ public class AlunoTurmaService {
             response.put("message", "Associação alterada com sucesso!");
             return ResponseEntity.ok(response);
         }catch(Exception e){
-            response.put("error", "Erro ao alterar associação!");
+            response.put("error", "Erro ao alterar associação!" + e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
@@ -63,7 +63,7 @@ public class AlunoTurmaService {
             response.put("message", "Associação removida com sucesso!");
             return ResponseEntity.ok(response);
         }catch (Exception e){
-            response.put("error", "Erro ao remover associação!");
+            response.put("error", "Erro ao remover associação!" + e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }

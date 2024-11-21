@@ -54,7 +54,7 @@ public class AlunoService {
             response.put("message", "Aluno alterado com sucesso!!");
             return ResponseEntity.ok(response);
         } catch (Exception e) {
-            response.put("error", "Erro ao alterar aluno!!");
+            response.put("error", "Erro ao alterar aluno!!" + e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
@@ -67,7 +67,7 @@ public class AlunoService {
             response.put("message", "Aluno removido com sucesso!!");
             return ResponseEntity.ok(response);
         }catch (Exception e){
-            response.put("error", "Erro ao remover aluno!!");
+            response.put("error", "Erro ao remover aluno!!" + e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }

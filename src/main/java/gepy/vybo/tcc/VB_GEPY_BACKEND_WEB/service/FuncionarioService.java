@@ -55,7 +55,7 @@ public class FuncionarioService {
             response.put("message", "Funcionário alterado com sucesso!!");
             return ResponseEntity.ok(response);
         }catch(Exception e){
-            response.put("error", "Erro ao alterar funcionário!!");
+            response.put("error", "Erro ao alterar funcionário!!" + e.getMessage());
             return ResponseEntity.ok(response);
         }
     }
@@ -68,7 +68,7 @@ public class FuncionarioService {
             response.put("message", "Funcionário deletado com sucesso!!");
             return ResponseEntity.ok(response);
         }catch (Exception e){
-            response.put("error", "Erro ao deletar funcionário!!");
+            response.put("error", "Erro ao deletar funcionário!!" + e.getMessage());
             return ResponseEntity.ok(response);
         }
     }

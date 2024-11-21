@@ -21,7 +21,7 @@ public class AlunoEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  Long id;
+    private Long id;
 
     // Identificação
     @NotBlank
@@ -101,6 +101,10 @@ public class AlunoEntity {
     private String orgaoExpedidor;
 
     // Contato Aluno
+    @NotBlank
+    @Column(nullable = false)
+    private String emailAluno;
+
     @NotBlank
     @Column(nullable = false)
     private String telefoneAluno;

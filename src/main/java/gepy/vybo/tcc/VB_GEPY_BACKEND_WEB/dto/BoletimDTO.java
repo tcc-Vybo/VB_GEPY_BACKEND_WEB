@@ -22,7 +22,7 @@ public class BoletimDTO {
     private int faltaTerceiroBim;
     private int notaQuartoBim;
     private int faltaQuartoBim;
-    private String situacao;
+    private SituacaoDTO situacao;
 
     public BoletimDTO(BoletimEntity boletim){
         BeanUtils.copyProperties(boletim, this);
@@ -31,6 +31,9 @@ public class BoletimDTO {
         }
         if(boletim != null && boletim.getDisciplina() != null){
             this.disciplina = new DisciplinaDTO(boletim.getDisciplina());
+        }
+        if(boletim != null && boletim.getSituacao() != null){
+            this.situacao = new SituacaoDTO(boletim.getSituacao());
         }
     }
 }

@@ -25,7 +25,7 @@ public class FuncionarioDTO {
     private String email;
 
     // Dados Profissionais
-    private String cargo;
+    private CargoDTO cargo;
     private String departamento;
     private String dataAdmissao;
 
@@ -46,5 +46,8 @@ public class FuncionarioDTO {
 
     public FuncionarioDTO(FuncionarioEntity funcionario) {
         BeanUtils.copyProperties(funcionario, this);
+        if(funcionario != null && funcionario.getCargo() != null) {
+            this.cargo = new CargoDTO(funcionario.getCargo());
+        }
     }
 }

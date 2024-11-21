@@ -37,7 +37,7 @@ public class DisciplinaService {
             response.put("message", "Disciplina registrada com sucesso!!");
             return ResponseEntity.ok(response);
         }catch (Exception e){
-            response.put("error", "Erro ao inserir disciplina!!");
+            response.put("error", "Erro ao inserir disciplina!!" + e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
@@ -50,7 +50,7 @@ public class DisciplinaService {
             response.put("message", "Disciplina alterada com sucesso!!");
             return ResponseEntity.ok(response);
         }catch (Exception e){
-            response.put("error", "Erro ao alterar disciplina!!");
+            response.put("error", "Erro ao alterar disciplina!!" + e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
@@ -63,7 +63,7 @@ public class DisciplinaService {
             response.put("message", "Disciplina removida com sucesso!!");
             return ResponseEntity.ok(response);
         }catch (Exception e){
-            response.put("error", "Erro ao remover disciplina!!");
+            response.put("error", "Erro ao remover disciplina!!" + e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }

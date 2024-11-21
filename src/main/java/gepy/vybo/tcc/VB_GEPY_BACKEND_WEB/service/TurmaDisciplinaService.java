@@ -31,7 +31,7 @@ public class TurmaDisciplinaService {
             response.put("message", "Turma associada a disciplina com sucesso!");
             return ResponseEntity.ok(response);
         }catch (Exception e){
-            response.put("error", "Erro ao associar turma!");
+            response.put("error", "Erro ao associar turma!" + e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
@@ -44,7 +44,7 @@ public class TurmaDisciplinaService {
             response.put("message", "Associação alterada com sucesso!");
             return ResponseEntity.ok(response);
         }catch (Exception e){
-            response.put("error", "Erro ao alterar associação!");
+            response.put("error", "Erro ao alterar associação!" + e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
@@ -57,7 +57,7 @@ public class TurmaDisciplinaService {
             response.put("message", "Associação removida com sucesso!");
             return ResponseEntity.ok(response);
         }catch (Exception e){
-            response.put("error", "Erro ao remover associação!");
+            response.put("error", "Erro ao remover associação!" + e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }

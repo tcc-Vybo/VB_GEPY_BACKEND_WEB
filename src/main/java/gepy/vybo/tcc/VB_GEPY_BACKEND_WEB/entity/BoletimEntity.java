@@ -53,9 +53,9 @@ public class BoletimEntity {
     @Column(nullable = false)
     private int faltaQuartoBim;
 
-    @NotBlank
-    @Column(nullable = false)
-    private String situacao;
+    @ManyToOne
+    @JoinColumn(name = "id_situacao", nullable = false)
+    private SituacaoEntity situacao;
 
     public BoletimEntity(BoletimDTO boletim){
         BeanUtils.copyProperties(boletim, this);
@@ -64,6 +64,9 @@ public class BoletimEntity {
         }
         if(boletim != null && boletim.getDisciplina() != null){
             this.disciplina = new DisciplinaEntity(boletim.getDisciplina());
+        }
+        if(boletim != null && boletim.getSituacao() != null){
+            this.situacao = new SituacaoEntity(boletim.getSituacao());
         }
     }
 }

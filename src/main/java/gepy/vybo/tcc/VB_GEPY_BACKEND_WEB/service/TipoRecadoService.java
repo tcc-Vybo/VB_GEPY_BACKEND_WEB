@@ -31,7 +31,7 @@ public class TipoRecadoService {
             response.put("message", "Tipo de recado adicionado com sucesso!");
             return ResponseEntity.ok(response);
         }catch(Exception e){
-            response.put("error", "Erro ao inserir tipo de recado!");
+            response.put("error", "Erro ao inserir tipo de recado!" + e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
@@ -45,7 +45,7 @@ public class TipoRecadoService {
             response.put("message", "Tipo de recado alterado com sucesso!");
             return ResponseEntity.ok(response);
         }catch(Exception e){
-            response.put("error", "Erro ao alterar tipo de recado!");
+            response.put("error", "Erro ao alterar tipo de recado!" + e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
@@ -58,7 +58,7 @@ public class TipoRecadoService {
             response.put("message", "Tipo de recado excluido com sucesso!");
             return ResponseEntity.ok(response);
         }catch(Exception e){
-            response.put("error", "Erro ao excluir tipo de recado!");
+            response.put("error", "Erro ao excluir tipo de recado!" + e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }

@@ -44,6 +44,11 @@ public class BoletimController {
         return boletimService.alterar(boletim);
     }
 
+    @PatchMapping("/{id}")
+    public ResponseEntity<Map<String, String>> alterarParcial(@PathVariable("id") Long id, @RequestBody BoletimDTO boletimDTO) {
+        return boletimService.atualizar(id, boletimDTO);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Map<String, String>> excluir(@PathVariable("id") Long id){
         return boletimService.excluir(id);

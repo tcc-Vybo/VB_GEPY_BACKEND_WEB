@@ -58,15 +58,15 @@ public class RecadoTurmaController {
         return ResponseEntity.ok(recados);
     }
 
-    @GetMapping("/buscar")
-    public ResponseEntity<List<RecadoTurmaDTO>> buscarRecados(
+    @GetMapping("/buscar-filtros")
+    public ResponseEntity<List<RecadoTurmaDTO>> buscarPorFiltros(
             @RequestParam(required = false) String dataMarcada,
             @RequestParam(required = false) String dataDeEnvio,
             @RequestParam(required = false) Long remetente,
             @RequestParam(required = false) Long destinatario,
             @RequestParam(required = false) Long tipoRecado) {
 
-            List<RecadoTurmaDTO> recados = recadoTurmaService.buscarPorFiltrosSQL(dataMarcada, dataDeEnvio, remetente, destinatario, tipoRecado);
+        List<RecadoTurmaDTO> recados = recadoTurmaService.buscarPorFiltros(dataMarcada, dataDeEnvio, remetente, destinatario, tipoRecado);
         return ResponseEntity.ok(recados);
     }
 

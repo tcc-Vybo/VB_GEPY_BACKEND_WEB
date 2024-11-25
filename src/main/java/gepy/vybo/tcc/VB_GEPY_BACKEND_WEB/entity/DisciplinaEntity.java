@@ -16,7 +16,7 @@ import org.springframework.beans.BeanUtils;
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class DisciplinaEntity {
+public class DisciplinaEntity extends DisciplinaDTO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -44,6 +44,11 @@ public class BoletimController {
         return boletimService.alterar(boletim);
     }
 
+    @PutMapping("/alterar/{id}")
+    public ResponseEntity<Map<String, String>> alterValue(@RequestBody BoletimDTO boletim, @PathVariable("id") Long id) {
+        return boletimService.alterValue(boletim, id);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Map<String, String>> excluir(@PathVariable("id") Long id){
         return boletimService.excluir(id);

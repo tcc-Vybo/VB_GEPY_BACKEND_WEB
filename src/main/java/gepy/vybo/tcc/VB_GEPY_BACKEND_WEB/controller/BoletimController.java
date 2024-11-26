@@ -30,8 +30,7 @@ public class BoletimController {
 
     @GetMapping("/buscarById/{id}")
     public ResponseEntity<List<BoletimDTO>> findById(@PathVariable("id") Long id){
-        List<BoletimDTO> boletim = boletimService.findById(id);
-        return ResponseEntity.ok(boletim);
+        return ResponseEntity.ok(boletimService.findById(id));
     }
 
     @GetMapping("/buscar/byAluno/{id_aluno}")

@@ -28,6 +28,12 @@ public class BoletimController {
         return ResponseEntity.ok(notas);
     }
 
+    @GetMapping("/buscarById/{id}")
+    public ResponseEntity<List<BoletimDTO>> findById(@PathVariable("id") Long id){
+        List<BoletimDTO> boletim = boletimService.findById(id);
+        return ResponseEntity.ok(boletim);
+    }
+
     @GetMapping("/buscar/byAluno/{id_aluno}")
     public ResponseEntity<List<BoletimDTO>> buscarPorAluno(@PathVariable("id_aluno") Long idAluno){
         List<BoletimDTO> notas = boletimService.buscarPorAluno(idAluno);

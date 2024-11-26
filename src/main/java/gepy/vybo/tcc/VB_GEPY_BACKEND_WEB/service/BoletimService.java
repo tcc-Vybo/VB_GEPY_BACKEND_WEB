@@ -28,6 +28,11 @@ public class BoletimService {
         return boletim.stream().map(BoletimDTO::new).toList();
     }
 
+    public List<BoletimDTO> findById(Long id){
+        Optional<BoletimEntity> boletim = boletimRepository.findById(id);
+        return boletim.stream().map(BoletimDTO::new).toList();
+    }
+
     public List<BoletimDTO> buscarPorDisciplina(Long idDisciplina){
         List<BoletimEntity> notas = boletimRepository.findAllByDisciplina(idDisciplina);
         return notas.stream().map(BoletimDTO::new).collect(Collectors.toList());

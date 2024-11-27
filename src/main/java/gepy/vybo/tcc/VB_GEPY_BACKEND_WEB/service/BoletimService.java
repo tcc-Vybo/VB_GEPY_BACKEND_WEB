@@ -28,6 +28,11 @@ public class BoletimService {
         return boletim.stream().map(BoletimDTO::new).toList();
     }
 
+    public BoletimDTO findById(Long id) {
+        Optional<BoletimEntity> boletim = boletimRepository.findById(id);
+        return boletim.map(BoletimDTO::new).orElse(null);
+    }
+
     public List<BoletimDTO> buscarPorDisciplina(Long idDisciplina){
         List<BoletimEntity> notas = boletimRepository.findAllByDisciplina(idDisciplina);
         return notas.stream().map(BoletimDTO::new).collect(Collectors.toList());
@@ -64,52 +69,38 @@ public class BoletimService {
         }
     }
 
-    public ResponseEntity<Map<String, String>> atualizar(Long id, BoletimDTO boletimDTO){
-        Optional<BoletimEntity> boletimOpt = boletimRepository.findById(id);
+    public ResponseEntity<Map<String, String>> alterValue(BoletimDTO boletim, Long id) {
         Map<String, String> response = new HashMap<>();
+        Optional<BoletimEntity> boletimEntityOptional = boletimRepository.findById(id);
+
         try {
-            if (boletimOpt.isPresent()) {
-                BoletimEntity boletimEntity = boletimOpt.get();
-                if (boletimDTO.getNotaPrimeiroBim() != 0) {
-                    boletimEntity.setNotaPrimeiroBim(boletimDTO.getNotaPrimeiroBim());
-                }
-                if (boletimDTO.getFaltaPrimeiroBim() != 0) {
-                    boletimEntity.setFaltaPrimeiroBim(boletimDTO.getFaltaPrimeiroBim());
-                }
-                if (boletimDTO.getNotaSegundoBim() != 0) {
-                    boletimEntity.setNotaSegundoBim(boletimDTO.getNotaSegundoBim());
-                }
-                if (boletimDTO.getFaltaSegundoBim() != 0) {
-                    boletimEntity.setFaltaSegundoBim(boletimDTO.getFaltaSegundoBim());
-                }
-                if (boletimDTO.getNotaTerceiroBim() != 0) {
-                    boletimEntity.setNotaTerceiroBim(boletimDTO.getNotaTerceiroBim());
-                }
-                if (boletimDTO.getFaltaTerceiroBim() != 0) {
-                    boletimEntity.setFaltaTerceiroBim(boletimDTO.getFaltaTerceiroBim());
-                }
-                if (boletimDTO.getNotaQuartoBim() != 0) {
-                    boletimEntity.setNotaQuartoBim(boletimDTO.getNotaQuartoBim());
-                }
-                if (boletimDTO.getFaltaQuartoBim() != 0) {
-                    boletimEntity.setFaltaQuartoBim(boletimDTO.getFaltaQuartoBim());
-                }
-                if (boletimDTO.getSituacao() != null) {
-                    boletimEntity.setSituacao(new SituacaoEntity(boletimDTO.getSituacao()));
-                }
-                if (boletimDTO.getAluno() != null) {
-                    boletimEntity.setAluno(new AlunoEntity(boletimDTO.getAluno()));
-                }
-                if (boletimDTO.getDisciplina() != null) {
-                    boletimEntity.setDisciplina(new DisciplinaEntity(boletimDTO.getDisciplina()));
-                }
+            if (boletimEntityOptional.isPresent()) {
+                BoletimEntity boletimEntity = boletimEntityOptional.get();
+                boletimEntity.setAluno(new AlunoEntity(boletim.getAluno()));
+                boletimEntity.setDisciplina(new DisciplinaEntity(boletim.getDisciplina()));
+                boletimEntity.setNotaPrimeiroBim(boletim.getNotaPrimeiroBim());
+                boletimEntity.setFaltaPrimeiroBim(boletim.getFaltaPrimeiroBim());
+                boletimEntity.setNotaSegundoBim(boletim.getNotaSegundoBim());
+                boletimEntity.setFaltaSegundoBim(boletim.getFaltaSegundoBim());
+                boletimEntity.setNotaTerceiroBim(boletim.getNotaTerceiroBim());
+                boletimEntity.setFaltaTerceiroBim(boletim.getFaltaTerceiroBim());
+                boletimEntity.setNotaQuartoBim(boletim.getNotaQuartoBim());
+                boletimEntity.setFaltaQuartoBim(boletim.getFaltaQuartoBim());
+                boletimEntity.setSituacao(new SituacaoEntity(boletim.getSituacao()));
+
                 boletimRepository.save(boletimEntity);
+
+                // Mensagem de resposta
+                response.put("message", "Boletim alterado com sucesso!!");
+                return ResponseEntity.ok(response);
+            } else {
+                response.put("error", "Boletim não encontrado!");
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
             }
-            response.put("message", "Boletim atualizado com sucesso!!");
-            return ResponseEntity.ok(response);
         } catch (Exception e) {
-            response.put("error", "Erro ao atualizar boletim!!" + e.getMessage());
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+            // Mensagem de erro genérica
+            response.put("error", "Erro ao alterar boletim: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
 

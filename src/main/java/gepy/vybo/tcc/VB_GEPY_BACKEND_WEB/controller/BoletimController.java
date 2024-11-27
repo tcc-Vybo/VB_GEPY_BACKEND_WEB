@@ -3,6 +3,7 @@ package gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.controller;
 import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.dto.BoletimDTO;
 import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.service.BoletimService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,6 +29,15 @@ public class BoletimController {
         return ResponseEntity.ok(notas);
     }
 
+    @GetMapping("/buscarById/{id}")
+    public ResponseEntity<BoletimDTO> findById(@PathVariable("id") Long id) {
+        BoletimDTO boletim = boletimService.findById(id);
+        if (boletim == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        return ResponseEntity.ok(boletim);
+    }
+
     @GetMapping("/buscar/byAluno/{id_aluno}")
     public ResponseEntity<List<BoletimDTO>> buscarPorAluno(@PathVariable("id_aluno") Long idAluno){
         List<BoletimDTO> notas = boletimService.buscarPorAluno(idAluno);
@@ -44,9 +54,9 @@ public class BoletimController {
         return boletimService.alterar(boletim);
     }
 
-    @PatchMapping("/{id}")
-    public ResponseEntity<Map<String, String>> alterarParcial(@PathVariable("id") Long id, @RequestBody BoletimDTO boletimDTO) {
-        return boletimService.atualizar(id, boletimDTO);
+    @PutMapping("/alterar/{id}")
+    public ResponseEntity<Map<String, String>> alterValue(@RequestBody BoletimDTO boletim, @PathVariable("id") Long id) {
+        return boletimService.alterValue(boletim, id);
     }
 
     @DeleteMapping("/{id}")

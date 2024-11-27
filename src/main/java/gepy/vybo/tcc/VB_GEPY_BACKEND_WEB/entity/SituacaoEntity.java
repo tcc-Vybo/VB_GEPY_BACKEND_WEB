@@ -15,7 +15,7 @@ import org.springframework.beans.BeanUtils;
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class SituacaoEntity {
+public class SituacaoEntity extends SituacaoDTO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

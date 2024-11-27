@@ -72,6 +72,11 @@ public class RecadoTurmaService {
         return recadoTurmaPorFiltrosSql.stream().map(RecadoTurmaDTO::new).collect(Collectors.toList());
     }
 
+    public List<RecadoTurmaDTO> buscarPorFiltros(String dataMarcada, String dataDeEnvio, Long remetente, Long destinatario, Long tipoRecado) {
+        List<RecadoTurmaEntity> recadoTurmaComFiltros = recadoTurmaRepository.buscarPorFiltrosSQL(dataMarcada, dataDeEnvio, remetente, destinatario, tipoRecado);
+        return recadoTurmaComFiltros.stream().map(RecadoTurmaDTO::new).collect(Collectors.toList());
+    }
+
     public ResponseEntity<Map<String, String>> inserir(RecadoTurmaDTO recadoTurma){
         RecadoTurmaEntity recadoTurmaEntity = new RecadoTurmaEntity(recadoTurma);
         Map<String, String> response = new HashMap<>();

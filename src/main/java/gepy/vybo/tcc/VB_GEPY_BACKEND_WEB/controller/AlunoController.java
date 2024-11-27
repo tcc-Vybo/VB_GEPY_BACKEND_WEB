@@ -39,6 +39,11 @@ public class AlunoController {
         return alunoService.alterar(aluno);
     }
 
+    @PutMapping("/alterar/{id}")
+    public ResponseEntity<Map<String, String>> alterValue (@RequestBody AlunoDTO aluno, @PathVariable Long id){
+        return alunoService.alterValue(aluno, id);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Map<String, String>> excluir(@PathVariable("id") Long id){
        return alunoService.excluir(id);

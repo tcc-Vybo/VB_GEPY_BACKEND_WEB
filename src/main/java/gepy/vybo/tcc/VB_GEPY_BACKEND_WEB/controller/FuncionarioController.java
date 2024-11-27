@@ -1,5 +1,6 @@
 package gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.controller;
 
+import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.dto.AlunoDTO;
 import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.dto.FuncionarioDTO;
 import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.service.FuncionarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,11 @@ public class FuncionarioController {
     @PutMapping
     public ResponseEntity<Map<String, String>> alterar (@RequestBody FuncionarioDTO funcionario){
         return funcionarioService.alterar(funcionario);
+    }
+
+    @PutMapping("/alterar/{id}")
+    public ResponseEntity<Map<String, String>> alterValue (@RequestBody FuncionarioDTO funcionario, @PathVariable Long id){
+        return funcionarioService.alterValue(funcionario, id);
     }
 
     @DeleteMapping("/{id}")

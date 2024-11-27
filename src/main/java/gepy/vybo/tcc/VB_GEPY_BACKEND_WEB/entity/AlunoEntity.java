@@ -17,7 +17,7 @@ import org.springframework.beans.BeanUtils;
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class AlunoEntity extends AlunoDTO {
+public class AlunoEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

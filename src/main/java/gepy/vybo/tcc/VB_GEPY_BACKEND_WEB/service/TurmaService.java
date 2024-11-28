@@ -1,6 +1,9 @@
 package gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.service;
 
+import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.dto.FuncionarioDTO;
 import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.dto.TurmaDTO;
+import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.entity.CargoEntity;
+import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.entity.FuncionarioEntity;
 import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.entity.TurmaEntity;
 import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.repository.TurmaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +14,7 @@ import org.springframework.stereotype.Service;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -51,6 +55,31 @@ public class TurmaService {
             return ResponseEntity.ok(response);
         }catch (Exception e){
             response.put("error", "Erro ao alterar turma!!" + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        }
+    }
+
+    public ResponseEntity<Map<String, String>> alterValue(TurmaDTO turma, Long id) {
+        Map<String, String> response = new HashMap<>();
+        Optional<TurmaEntity> turmaEntityOptional = turmaRepository.findById(id);
+
+        try {
+            if (turmaEntityOptional.isPresent()) {
+                TurmaEntity turmaEntity = turmaEntityOptional.get();
+                turmaEntity.setNome(turma.getNome());
+
+                turmaRepository.save(turmaEntity);
+
+                // Mensagem de resposta
+                response.put("message", "Turma alterada com sucesso!!");
+                return ResponseEntity.ok(response);
+            } else {
+                response.put("error", "Turma não encontrada!");
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+            }
+        } catch (Exception e) {
+            // Mensagem de erro genérica
+            response.put("error", "Erro ao alterar turma: " + e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }

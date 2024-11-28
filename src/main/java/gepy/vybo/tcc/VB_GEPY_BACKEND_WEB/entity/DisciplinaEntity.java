@@ -10,6 +10,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.beans.BeanUtils;
 
+import java.util.List;
+
 @Entity
 @Table(name = "disciplina")
 @Getter
@@ -37,6 +39,9 @@ public class DisciplinaEntity extends DisciplinaDTO {
             this.nome = this.nome.toUpperCase();
         }
     }
+
+    @OneToMany(mappedBy = "disciplina")
+    private List<ProfessorDisciplinaEntity> professores;
 
     public DisciplinaEntity(DisciplinaDTO disciplina) {
         BeanUtils.copyProperties(disciplina, this);

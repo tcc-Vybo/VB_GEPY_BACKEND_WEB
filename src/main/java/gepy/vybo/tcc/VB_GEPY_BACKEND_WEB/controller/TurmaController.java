@@ -1,5 +1,6 @@
 package gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.controller;
 
+import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.dto.FuncionarioDTO;
 import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.dto.TurmaDTO;
 import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.service.TurmaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,11 @@ public class TurmaController {
     @PutMapping
     public ResponseEntity<Map<String, String>> alterar(@RequestBody TurmaDTO turma){
         return turmaService.alterar(turma);
+    }
+
+    @PutMapping("/alterar/{id}")
+    public ResponseEntity<Map<String, String>> alterValue (@RequestBody TurmaDTO turma, @PathVariable Long id){
+        return turmaService.alterValue(turma, id);
     }
 
     @DeleteMapping("/{id}")

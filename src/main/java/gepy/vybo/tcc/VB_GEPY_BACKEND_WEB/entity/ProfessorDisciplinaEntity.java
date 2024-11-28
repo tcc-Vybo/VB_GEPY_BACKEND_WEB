@@ -10,7 +10,7 @@ import lombok.Setter;
 import org.springframework.beans.BeanUtils;
 
 @Entity
-@Table(name = "professor_disciplina")
+@Table(name = "professor_disciplina", uniqueConstraints = @UniqueConstraint(columnNames = {"id_professor", "id_disciplina"}))
 @Getter
 @Setter
 @NoArgsConstructor

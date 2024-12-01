@@ -15,6 +15,6 @@ public interface AlunoRepository extends JpaRepository<AlunoEntity, Long> {
     @Query(value = "SELECT a.* FROM aluno a WHERE a.nome_completo LIKE %?% ORDER BY a.id", nativeQuery = true)
     List<AlunoEntity> findAlunoByName(String nomeCompleto);
 
-    @Query(value = "SELECT a.* FROM aluno a WHERE a.cpf = ? and a.emailAluno = ?")
+    @Query(value = "SELECT a.* FROM aluno a WHERE a.cpf = ? and a.emailAluno = ?", nativeQuery = true)
     AlunoEntity findByCpfAndEmail(String cpf, String email);
 }

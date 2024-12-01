@@ -29,6 +29,12 @@ public class AlunoController {
         return ResponseEntity.ok(alunos);
     }
 
+    @GetMapping("/login/{cpf}/{email}")
+    public ResponseEntity<AlunoDTO> buscaPorCpfEmail(@PathVariable("cpf") String cpf , @PathVariable("email") String email){
+        AlunoDTO aluno = alunoService.buscaPorCpfEmail(cpf, email);
+        return ResponseEntity.ok(aluno);
+    }
+
     @PostMapping
     public ResponseEntity<Map<String, String>> inserir(@RequestBody AlunoDTO aluno){
         return alunoService.inserir(aluno);

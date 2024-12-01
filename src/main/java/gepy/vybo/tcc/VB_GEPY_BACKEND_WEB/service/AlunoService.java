@@ -37,6 +37,10 @@ public class AlunoService {
         return aluno.stream().map(AlunoDTO::new).toList();
     }
 
+    public AlunoDTO buscaPorCpfEmail(String cpf, String email){
+        AlunoEntity aluno = alunoRepository.findByCpfAndEmail(cpf, email);
+        return new AlunoDTO(aluno);
+    }
 
     public ResponseEntity<Map<String, String>> inserir(AlunoDTO aluno) {
         AlunoEntity alunoEntity = new AlunoEntity(aluno);

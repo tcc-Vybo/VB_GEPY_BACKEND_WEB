@@ -112,6 +112,20 @@ public class RecadoTurmaService {
         try {
             if (recadoTurmaEntityOptional.isPresent()) {
                 RecadoTurmaEntity recadoTurmaEntity = recadoTurmaEntityOptional.get();
+
+                // Log dos dados recebidos
+                System.out.println("Recado recebido para alteração: " + recadoTurma.toString());
+
+                // Validações básicas
+                if (recadoTurma.getTitulo() == null || recadoTurma.getDescricao() == null ||
+                        recadoTurma.getData() == null || recadoTurma.getHora() == null ||
+                        recadoTurma.getRemetente() == null || recadoTurma.getDestinatario() == null ||
+                        recadoTurma.getTipoRecado() == null) {
+                    response.put("error", "Campos obrigatórios não podem ser nulos.");
+                    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+                }
+
+                // Atualiza os valores
                 recadoTurmaEntity.setTitulo(recadoTurma.getTitulo());
                 recadoTurmaEntity.setDescricao(recadoTurma.getDescricao());
                 recadoTurmaEntity.setData(recadoTurma.getData());
@@ -123,19 +137,18 @@ public class RecadoTurmaService {
 
                 recadoTurmaRepository.save(recadoTurmaEntity);
 
-                // Mensagem de resposta
-                response.put("message", "Recado alterado com sucesso!!");
+                response.put("message", "Recado alterado com sucesso!");
                 return ResponseEntity.ok(response);
             } else {
                 response.put("error", "Recado não encontrado!");
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
             }
         } catch (Exception e) {
-            // Mensagem de erro genérica
             response.put("error", "Erro ao alterar recado: " + e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
+
 
     public ResponseEntity<Map<String, String>> excluir(Long id){
         RecadoTurmaEntity recadoTurmaEntity = recadoTurmaRepository.findById(id).get();

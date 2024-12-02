@@ -1,5 +1,6 @@
 package gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.controller;
 
+import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.dto.FuncionarioDTO;
 import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.dto.RecadoTurmaDTO;
 import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.service.RecadoTurmaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,6 +79,11 @@ public class RecadoTurmaController {
     @PutMapping
     public ResponseEntity<Map<String, String>> alterar(@RequestBody RecadoTurmaDTO recadoTurma){
         return recadoTurmaService.alterar(recadoTurma);
+    }
+
+    @PutMapping("/alterar/{id}")
+    public ResponseEntity<Map<String, String>> alterValue (@RequestBody RecadoTurmaDTO recadoTurma, @PathVariable Long id){
+        return recadoTurmaService.alterValue(recadoTurma, id);
     }
 
     @DeleteMapping("/{id}")

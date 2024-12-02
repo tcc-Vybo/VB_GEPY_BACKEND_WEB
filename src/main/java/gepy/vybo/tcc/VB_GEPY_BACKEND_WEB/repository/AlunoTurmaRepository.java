@@ -15,4 +15,7 @@ public interface AlunoTurmaRepository extends JpaRepository<AlunoTurmaEntity, Lo
     List<AlunoTurmaEntity> findAlunoByTurma(Long idTurma);
 
     boolean existsByAlunoAndTurma(AlunoEntity aluno, TurmaEntity turma);
+
+    @Query(value = "SELECT apt.* FROM aluno_turma apt JOIN aluno a ON apt.id_aluno = a.id WHERE a.id = ?", nativeQuery = true)
+    List<AlunoTurmaEntity> findVinculoAlunoByTurma(Long idAluno);
 }

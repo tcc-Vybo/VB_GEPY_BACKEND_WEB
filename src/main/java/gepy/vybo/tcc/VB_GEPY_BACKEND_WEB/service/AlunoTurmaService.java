@@ -31,6 +31,11 @@ public class AlunoTurmaService {
         return alunoTurmas.stream().map(AlunoTurmaDTO::new).collect(Collectors.toList());
     }
 
+    public List<AlunoTurmaDTO> buscarPorAluno(Long idAluno){
+        List<AlunoTurmaEntity> alunoTurmas = alunoTurmaRepository.findVinculoAlunoByTurma(idAluno);
+        return alunoTurmas.stream().map(AlunoTurmaDTO::new).collect(Collectors.toList());
+    }
+
     public ResponseEntity<Map<String, String>> inserir(AlunoTurmaDTO alunoTurma){
         AlunoEntity alunoEntity = new AlunoEntity(alunoTurma.getAluno());
         TurmaEntity turmaEntity = new TurmaEntity(alunoTurma.getTurma());

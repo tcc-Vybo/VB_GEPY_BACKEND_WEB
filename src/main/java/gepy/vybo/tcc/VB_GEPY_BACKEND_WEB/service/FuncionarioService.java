@@ -79,10 +79,6 @@ public class FuncionarioService {
                 funcionarioEntity.setTelefone(funcionario.getTelefone());
                 funcionarioEntity.setEmail(funcionario.getEmail());
 
-                funcionarioEntity.setCargo(new CargoEntity(funcionario.getCargo()));
-                funcionarioEntity.setDepartamento(funcionario.getDepartamento());
-                funcionarioEntity.setDataAdmissao(funcionario.getDataAdmissao());
-
                 funcionarioEntity.setCep(funcionario.getCep());
                 funcionarioEntity.setEndereco(funcionario.getEndereco());
                 funcionarioEntity.setNumero(funcionario.getNumero());

@@ -46,8 +46,5 @@ public class FuncionarioDTO {
 
     public FuncionarioDTO(FuncionarioEntity funcionario) {
         BeanUtils.copyProperties(funcionario, this);
-        if(funcionario != null && funcionario.getCargo() != null) {
-            this.cargo = new CargoDTO(funcionario.getCargo());
-        }
     }
 }

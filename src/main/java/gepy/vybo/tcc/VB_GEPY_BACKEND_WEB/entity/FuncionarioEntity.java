@@ -61,19 +61,6 @@ public class FuncionarioEntity {
     @Column(nullable = false)
     private String email;
 
-    // Dados Profissionais
-    @ManyToOne
-    @JoinColumn(name = "id_cargo", nullable = false)
-    private CargoEntity cargo;
-
-    @NotBlank
-    @Column(nullable = false)
-    private String departamento;
-
-    @NotBlank
-    @Column(nullable = false)
-    private String dataAdmissao;
-
     // Endereço Residencial
     @NotBlank
     @Column(nullable = false)
@@ -130,8 +117,5 @@ public class FuncionarioEntity {
 
     public FuncionarioEntity(FuncionarioDTO funcionario) {
         BeanUtils.copyProperties(funcionario, this);
-        if(funcionario != null && funcionario.getCargo() != null){
-            this.cargo = new CargoEntity(funcionario.getCargo());
-        }
     }
 }

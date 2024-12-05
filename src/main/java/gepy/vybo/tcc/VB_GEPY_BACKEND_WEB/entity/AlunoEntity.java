@@ -136,6 +136,9 @@ public class AlunoEntity {
         if (this.nomeCompleto != null){
             this.nomeCompleto = this.nomeCompleto.toUpperCase();
         }
+        if(this.nomeResponsavel != null){
+            this.nomeResponsavel = this.nomeResponsavel.toUpperCase();
+        }
     }
 
     public AlunoEntity(AlunoDTO aluno) {

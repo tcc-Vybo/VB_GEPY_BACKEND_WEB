@@ -24,11 +24,6 @@ public class FuncionarioDTO {
     private String telefone;
     private String email;
 
-    // Dados Profissionais
-    private CargoDTO cargo;
-    private String departamento;
-    private String dataAdmissao;
-
     // Endereço Residencial
     private String cep;
     private String endereco;

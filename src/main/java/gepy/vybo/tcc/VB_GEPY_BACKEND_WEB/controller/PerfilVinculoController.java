@@ -1,5 +1,6 @@
 package gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.controller;
 
+import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.dto.AlunoTurmaDTO;
 import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.dto.PerfilVinculoDTO;
 import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.dto.TurmaDisciplinaDTO;
 import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.service.PerfilVinculoService;
@@ -22,6 +23,12 @@ public class PerfilVinculoController {
     @GetMapping
     public List<PerfilVinculoDTO> listarTodos(){
         return perfilVinculoService.listarTodos();
+    }
+
+    @GetMapping("/buscarVinculoByFuncionario/{funcionario}")
+    public ResponseEntity<List<PerfilVinculoDTO>> buscarPorVinculoAlunoTurma(@PathVariable("funcionario") Long idFuncionario){
+        List<PerfilVinculoDTO> perfilVinculo = perfilVinculoService.buscarVinculoByFuncionario(idFuncionario);
+        return ResponseEntity.ok(perfilVinculo);
     }
 
     @PostMapping

@@ -1,7 +1,9 @@
 package gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.service;
 
+import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.dto.AlunoTurmaDTO;
 import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.dto.PerfilVinculoDTO;
 import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.dto.TurmaDisciplinaDTO;
+import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.entity.AlunoTurmaEntity;
 import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.entity.PerfilVinculoEntity;
 import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.entity.TurmaDisciplinaEntity;
 import gepy.vybo.tcc.VB_GEPY_BACKEND_WEB.repository.PerfilVinculoRepository;
@@ -14,6 +16,7 @@ import org.springframework.stereotype.Service;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class PerfilVinculoService {
@@ -24,6 +27,11 @@ public class PerfilVinculoService {
     public List<PerfilVinculoDTO> listarTodos(){
         List<PerfilVinculoEntity> perfilVinculo = perfilVinculoRepository.findAllOrderedById();
         return perfilVinculo.stream().map(PerfilVinculoDTO::new).toList();
+    }
+
+    public List<PerfilVinculoDTO> buscarVinculoByFuncionario(Long idFuncionario){
+        List<PerfilVinculoEntity> perfilVinculo = perfilVinculoRepository.findAllVinculosByFuncionarioId(idFuncionario);
+        return perfilVinculo.stream().map(PerfilVinculoDTO::new).collect(Collectors.toList());
     }
 
     public ResponseEntity<Map<String, String>> inserir(PerfilVinculoDTO perfilVinculo){

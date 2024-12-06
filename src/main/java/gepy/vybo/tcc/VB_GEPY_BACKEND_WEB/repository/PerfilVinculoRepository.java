@@ -11,4 +11,7 @@ public interface PerfilVinculoRepository extends JpaRepository<PerfilVinculoEnti
 
     @Query(value = "SELECT pv.* FROM perfil_vinculo pv ORDER BY pv.id", nativeQuery = true)
     List<PerfilVinculoEntity> findAllOrderedById();
+
+    @Query(value = "SELECT pv.* FROM perfil_vinculo pv JOIN funcionario f on pv.id_funcionario = f.id WHERE f.id = ? ", nativeQuery = true)
+    List<PerfilVinculoEntity> findAllVinculosByFuncionarioId(Long idFuncionario);
 }

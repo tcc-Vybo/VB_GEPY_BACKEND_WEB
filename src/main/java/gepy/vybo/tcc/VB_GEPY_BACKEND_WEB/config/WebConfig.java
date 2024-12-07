@@ -13,7 +13,7 @@ public class WebConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
                 .allowedMethods("GET", "POST", "PUT", "DELETE")
-                .allowedOrigins("http://localhost:8081", "http://localhost:3000", "http://localhost:5173/", "https://vybogepyfrontendweb.vercel.app/")
+                .allowedOrigins("http://localhost:8081", "http://localhost:3000", "http://localhost:5173/", "https://vybogepyfrontendweb.vercel.app/", "https://vb-gepy-frontend-web.vercel.app/")
                 .allowedHeaders("*");
     }
 }
